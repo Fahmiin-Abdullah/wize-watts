@@ -18,7 +18,7 @@
 	</nav>
 </div>
 
-<ul class="collapsible white-text hide-on-large-only">
+<ul class="collapsible white-text hide-on-large-only navSmall">
 	<li>
 		<div class="row margin0 black">
 			<div class="col s2 padding0">

@@ -11,6 +11,10 @@
 	padding: 0 !important;
 }
 
+.paddingTop5 {
+	padding-top: 5px !important;
+}
+
 .paddingTop10 {
 	padding-top: 10px !important;
 }
@@ -74,6 +78,12 @@
 
 
 
+
+
+body {
+	background-color: #191919;
+}
+
 a {
 	text-decoration: none;
 	color: #fff;
@@ -99,6 +109,11 @@ a:hover {
 	margin: auto;
 }
 
+.container90 {
+	width: 90%;
+	margin: auto;
+}
+
 .darkGrey {
 	background-color: #191919 !important;
 }
@@ -117,6 +132,9 @@ a:hover {
 
 
 
+
+
+
 @media only screen and (max-width: 600px) {
 	h3 {
 		font-size: 30px;
@@ -126,7 +144,7 @@ a:hover {
 		font-size: 20px;
 	}
 
-	.collapsible {
+	.navSmall {
 		margin: 0 !important;
 		border: none;
 		position: fixed;

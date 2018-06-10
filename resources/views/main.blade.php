@@ -12,6 +12,7 @@
 	<div class="container hide-on-med-and-down">
 		<div class="row paddingTop80 section center-align">
 			<form action="" method="GET">
+				@csrf
 				<div class="col m10">
 					<div class="input-field">
 						<input type="search" name="quickSearch" placeholder="Search for a component" required>

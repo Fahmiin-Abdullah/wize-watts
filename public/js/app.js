@@ -8,6 +8,9 @@ M.Dropdown.init(dropdown);
 const modal = document.querySelectorAll('.modal');
 M.Modal.init(modal);
 
+const tooltip= document.querySelectorAll('.tooltipped');
+M.Tooltip.init(tooltip);
+
 
 //JQUERY
 $(document).ready(function() {

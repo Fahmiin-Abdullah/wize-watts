@@ -1,0 +1,35 @@
+body {
+	background-color: #191919;
+}
+
+.showcase {
+	background: url('../img/shop.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	position: relative;
+}
+
+.showcase:before {
+	content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000;
+    opacity: 0.5;
+}
+
+input[type="search"] {
+	padding-left: 10px !important;
+}
+
+.productsSidebar li:hover {
+	box-shadow: 0 0 10px 2px yellow;
+}
+
+.productCard img {
+	width: 250px;
+	height: auto;
+}

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Auth;
 
-class UserController extends Controller
+class ShopController extends Controller
 {
-
+	
 }

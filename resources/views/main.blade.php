@@ -26,7 +26,7 @@
 		</div>
 	</div>
 	<div class="hide-on-large-only paddingTop30">
-		<a href="#" class="btn waves-effect waves-light yellow black-text center">Shop now!</a>
+		<a href="/shop" class="btn waves-effect waves-light yellow black-text center">Shop now!</a>
 	</div>
 </div>
 

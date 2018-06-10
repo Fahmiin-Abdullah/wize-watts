@@ -5,6 +5,9 @@ M.Collapsible.init(collapse);
 const dropdown = document.querySelectorAll('.dropdown-trigger');
 M.Dropdown.init(dropdown);
 
+const modal = document.querySelectorAll('.modal');
+M.Modal.init(modal);
+
 
 //JQUERY
 $(document).ready(function() {

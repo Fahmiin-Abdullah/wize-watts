@@ -39,6 +39,10 @@
 	padding-left: 300px !important;
 }
 
+.paddingRight50 {
+	padding-right: 50px;
+}
+
 .paddingBottom10 {
 	padding-bottom: 10px !important;
 }
@@ -153,5 +157,12 @@ a:hover {
 	.container90 {
 		width: 90%;
 		margin: auto;
+	}
+
+	.dropdownContent {
+		position: fixed;
+		top: 65px !important;
+		left: 25px !important;
+		width: 300px !important;
 	}
 }

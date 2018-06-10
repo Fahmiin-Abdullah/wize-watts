@@ -11,9 +11,13 @@
 |
 */
 
-Route::get('/', 'UserController@showMain')->name('mainPage');
+//MAIN PAGE
+Route::view('/', 'main');
 
 //AUTH
 Route::post('/signup', 'Auth\RegisterController@register')->name('signup');
 Route::post('/login', 'Auth\LoginController@login')->name('login');
 Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+
+//SHOP PAGE
+Route::view('/shop', 'shop');

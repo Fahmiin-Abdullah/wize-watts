@@ -5,7 +5,7 @@
 				<h5 class="center yellow-text paddingBottom10">Quick links</h5>
 				<div class="collection darkGrey">
 					<a href="/" class="waves-effect waves-light darkGrey white-text collection-item">Home</a>
-					<a class="waves-effect waves-light darkGrey white-text collection-item">Shop now!</a>
+					<a href="/shop" class="waves-effect waves-light darkGrey white-text collection-item">Shop now!</a>
 					<a class="waves-effect waves-light darkGrey white-text collection-item">About us</a>
 					<a class="waves-effect waves-light darkGrey white-text collection-item">My cart</a>
 				</div>
@@ -54,7 +54,7 @@
 			</div>
 			<div class="collection darkGrey linkReveal" id="quickLink">
 				<a href="/" class="waves-effect waves-light darkGrey white-text collection-item">Home</a>
-				<a class="waves-effect waves-light darkGrey white-text collection-item">Shop now!</a>
+				<a href="/shop" class="waves-effect waves-light darkGrey white-text collection-item">Shop now!</a>
 				<a class="waves-effect waves-light darkGrey white-text collection-item">About us</a>
 				<a class="waves-effect waves-light darkGrey white-text collection-item">My cart</a>
 			</div>

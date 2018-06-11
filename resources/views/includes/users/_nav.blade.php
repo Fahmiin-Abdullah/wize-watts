@@ -1,7 +1,7 @@
 <div class="navbar-fixed hide-on-med-and-down">
 	<nav class="black white-text">
 		<div class="nav-wrapper container">
-			<ul class="paddingLeft300">
+			<ul>
 				<li><a href="/">Home</a></li>
 				<li><a href="/shop">Shop now!</a></li>
 				<li><a href="">About us</a></li>
@@ -61,11 +61,11 @@
 			<form action="{{route('signup')}}" method="POST">
 				@csrf
 				<div class="input-field">
-					<input type="text" name="name" required>
+					<input type="text" name="name" value="{{Request::old('name')}}" required>
 					<label for="name">Username</label>
 				</div>
 				<div class="input-field">
-					<input type="email" name="email" required>
+					<input type="email" name="email" value="{{Request::old('email')}}" required>
 					<label for="email">Email</label>
 				</div>
 				<div class="input-field">
@@ -87,12 +87,21 @@
 			<form action="{{route('login')}}" method="POST">
 				@csrf
 				<div class="input-field">
-					<input type="text" name="name" required>
+					<input type="text" name="name" value="{{Request::old('name')}}" required>
 					<label for="name">Username</label>
 				</div>
 				<div class="input-field">
 					<input type="password" name="password" required>
 					<label for="password">Password</label>
+				</div>
+				<div class="input-field">
+					<p><label>
+						<input type="checkbox" name="remember">
+						<span>Remember me</span>
+					</label></p>
+				</div>
+				<div class="input-field">
+					<a href="{{route('password.request')}}" class="black-text">Forgot my password</a>
 				</div>
 				<div class="input-field center-align">
 					<button class="btn waves-effect waves-light yellow black-text" type="submit">Login</button>
@@ -123,11 +132,11 @@
 		<form action="{{route('signup')}}" method="POST">
 			@csrf
 			<div class="input-field">
-				<input type="text" name="name" required>
+				<input type="text" name="name" value="{{Request::old('name')}}" required>
 				<label for="name">Username</label>
 			</div>
 			<div class="input-field">
-				<input type="email" name="email" required>
+				<input type="email" name="email" value="{{Request::old('email')}}: required>
 				<label for="email">Email</label>
 			</div>
 			<div class="input-field">
@@ -147,12 +156,21 @@
 		<form action="{{route('login')}}" method="POST">
 			@csrf
 			<div class="input-field">
-				<input type="text" name="name" required>
+				<input type="text" name="name" value="{{Request::old('name')}}" required>
 				<label for="name">Username</label>
 			</div>
 			<div class="input-field">
 				<input type="password" name="password" required>
 				<label for="password">Password</label>
+			</div>
+			<div class="input-field">
+				<p><label>
+					<input type="checkbox" name="remember">
+					<span>Remember me</span>
+				</label></p>
+			</div>
+			<div class="input-field">
+				<a href="{{route('password.request')}}" class="black-text">Forgot my password</a>
 			</div>
 			<div class="input-field center-align">
 				<button class="btn waves-effect waves-light yellow black-text" type="submit">Login</button>

@@ -1,0 +1,20 @@
+td {
+	padding: 0px !important;
+}
+
+#newProductPanel, .editProductPanel {
+	border-radius: 10px;
+	background-color: #fff;
+}
+
+#productimage {
+	background-image: url(../../uploads/products/default_product.jpg);
+	background-size: cover;
+	width: 300px;
+	height: 300px;
+}
+
+#editProductImage {
+	width: 300px;
+	height: 300px;
+}

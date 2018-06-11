@@ -7,7 +7,7 @@ input[type="search"] {
 }
 
 .showcase {
-	background: url('../img/showcase.jpg');
+	background: url('../../img/showcase.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;

@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('css')
-	<link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('css/users/main.css')}}">
 @endsection
 
 @section('content')
 <div class="showcase center-align paddingBottom30 paddingTop50Small">
-	<a href="/"><img src="img/logo.png" class="section"></a>
+	<a href="/"><img src="{{asset('img/logo.png')}}" class="section"></a>
 	<h5 class="white-text section">A Virtual Electronics Supply Hub</h5>
 	<h2 class="center paddingTop10 margin0 white-text section"><strong>One stop shop for all your electronics need</strong></h2>
 	<div class="container hide-on-med-and-down">
@@ -61,7 +61,7 @@
 		<div class="col s12 m6">
 			<div class="card category">
 				<div class="card-image">
-					<img src="img/arduino.jpg" class="waves-effect waves-light activator">
+					<img src="{{asset('img/arduino.jpg')}}" class="waves-effect waves-light activator">
 				</div>
 				<div class="card-reveal">
 					<span class="card-title grey-text text-darken-4">For Arduino Enthusiasts<i class="material-icons right">close</i></span>
@@ -73,7 +73,7 @@
 		<div class="col s12 m6">
 			<div class="card category">
 				<div class="card-image">
-					<img src="img/electrical.jpg" class="waves-effect waves-light activator">
+					<img src="{{asset('img/electrical.jpg')}}" class="waves-effect waves-light activator">
 				</div>
 				<div class="card-reveal">
 					<span class="card-title grey-text text-darken-4">For All Things Electrical<i class="material-icons right">close</i></span>
@@ -85,7 +85,7 @@
 		<div class="col s12 m8">
 			<div class="card category">
 				<div class="card-image">
-					<img src="img/circuit.jpg" class="waves-effect waves-light activator">
+					<img src="{{asset('img/circuit.jpg')}}" class="waves-effect waves-light activator">
 				</div>
 				<div class="card-reveal">
 					<span class="card-title grey-text text-darken-4">Explore the abundance<i class="material-icons right">close</i></span>
@@ -97,7 +97,7 @@
 		<div class="col s12 m4">
 			<div class="card category">
 				<div class="card-image">
-					<img src="img/courses.jpg" class="waves-effect waves-light activator">
+					<img src="{{asset('img/courses.jpg')}}" class="waves-effect waves-light activator">
 				</div>
 				<div class="card-reveal">
 					<span class="card-title grey-text text-darken-4">Like learning?<i class="material-icons right">close</i></span>

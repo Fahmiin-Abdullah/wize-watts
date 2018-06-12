@@ -2,7 +2,7 @@ td {
 	padding: 0px !important;
 }
 
-#newProductPanel, .editProductPanel {
+#newProductPanel, #editProductPanel {
 	border-radius: 10px;
 	background-color: #fff;
 }

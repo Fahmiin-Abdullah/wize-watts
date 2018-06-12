@@ -33,6 +33,9 @@ Route::post('/products/review/{id}', 'ReviewController@writeReview')->name('writ
 Route::post('/products/review/edit/{id}', 'ReviewController@editReview')->name('editReview');
 Route::delete('/products/review/delete/{id}', 'ReviewController@deleteReview')->name('deleteReview');
 
+//PROFILE PAGE
+Route::get('/profile', 'ProfileController@showProfile')->name('profilePage');
+
 
 
 //ADMIN

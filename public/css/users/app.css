@@ -35,16 +35,32 @@
 	padding-top: 50px !important;
 }
 
+.paddingTop70 {
+	padding-top: 70px !important;
+}
+
 .paddingTop80 {
 	padding-top: 80px !important;
+}
+
+.paddingTop100 {
+	padding-top: 100px !important;
 }
 
 .paddingLeft300 {
 	padding-left: 300px !important;
 }
 
+.paddingRight5 {
+	padding-right: 5px !important;
+}
+
 .paddingRight50 {
 	padding-right: 50px;
+}
+
+.paddingLeft5 {
+	padding-left: 5px !important;
 }
 
 .paddingBottom10 {
@@ -75,10 +91,17 @@
 	margin: 0 !important;
 }
 
+.marginTop20 {
+	margin-top: 20px !important;
+}
+
 .marginTop30 {
 	margin-top: 30px !important;
 }
 
+.marginTop35 {
+	margin-top: 35px !important;
+}
 
 
 
@@ -139,6 +162,14 @@ a:hover {
 
 @media only screen and (max-width: 600px) {
 	/*GENERAL*/
+	.padding0Small {
+		padding: 0px !important;
+	}
+
+	.paddingAll5Small {
+		padding: 5px !important;
+	}
+
 	.paddingAll10Small {
 		padding: 10px !important;
 	}
@@ -157,6 +188,10 @@ a:hover {
 
 	.paddingTop50Small {
 		padding-top: 50px !important;
+	}
+
+	.paddingTop70Small {
+		padding-top: 70px !important;
 	}
 
 	.paddingLeft20Small {
@@ -189,6 +224,11 @@ a:hover {
 	}
 
 	.container90 {
+		width: 90%;
+		margin: auto;
+	}
+
+	.container90Small {
 		width: 90%;
 		margin: auto;
 	}

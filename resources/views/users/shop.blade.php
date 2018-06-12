@@ -68,10 +68,16 @@
 							<h6 class="paddingBottom10">BND${{$product->pricing}}</h6>
 							<a class="btn-floating halfway-fab waves-effect waves-light yellow tooltipped hide-on-med-and-down" data-position="top" data-tooltip="Add to favlist"><i class="material-icons black-text">favorite</i></a>
 						</div>
-						<div class="card-action black paddingAll10Small">
+						<div class="card-action black paddingAll5Small">
 							<a href="#" class="white-text smallFont left hide-on-med-and-down">Add to cart</a>
-							<a href="#"><i class="material-icons right white-text hide-on-large-only">favorite</i></a>
-							<a href="#"><i class="material-icons left white-text hide-on-large-only">add_shopping_cart</i></a>
+							<div class="row margin0">
+								<div class="col s6 center-align">
+									<a href="#"><i class="material-icons white-text hide-on-large-only">favorite</i></a>
+								</div>
+								<div class="col s6 center-align">
+									<a href="#"><i class="material-icons white-text hide-on-large-only">add_shopping_cart</i></a>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

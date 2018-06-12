@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div class="container80 paddingTop30 paddingBottom30">
+<div class="container80 container90Small paddingTop30 paddingBottom30 paddingTop70Small">
 	<div class="row white-text">
 		<div class="col s12 m5">
 			<div class="card">
@@ -20,26 +20,28 @@
 			<p>{{$product->description}}</p>
 			<br>
 			<h5>BND${{$product->pricing}}</h5>
-			<h6 class="left"><strong>Available in stock: </strong><span class="yellow-text">{{$product->stock}}</span></h6>
-			<h6 class="right"><strong>Shipping: </strong>BND$<em>{{$product->shipping}}</em></h6>
-			<div class="row paddingTop50">
+			<p class="left"><strong>Available in stock: </strong><span class="yellow-text">{{$product->stock}}</span></p>
+			<p class="right"><strong>Shipping: </strong>BND$<em>{{$product->shipping}}</em></p>
+			<div class="row paddingTop70">
 				<form action="" method="POST">
 				@csrf
-					<div class="col s4 m4">
+					<div class="col s6 m4">
 						<div class="input-field center-align">
 							<input type="number" name="quantity" class="white-text" required>
 							<label for="quantity">Quantity</label>
 						</div>
 					</div>
-					<div class="col s4 m4">
+					<div class="col s3 m4">
 						<div class="input-field center-align">
-							<button class="btn waves-effect waves-light black white-text"><i class="material-icons left">shopping_cart</i>Add to cart</button>
+							<button class="btn waves-effect waves-light black white-text hide-on-med-and-down"><i class="material-icons left">shopping_cart</i>Add to cart</button>
+							<button class="btn waves-effect waves-light black white-text hide-on-large-only"><i class="material-icons center">shopping_cart</i></button>
 						</div>
 					</div>
 				</form>
-				<div class="col s4 m4">
+				<div class="col s3 m4">
 					<div class="input-field center-align">
-						<button class="btn waves-effect waves-light black white-text"><i class="material-icons left">favorite</i>Add to favlist</button>
+						<button class="btn waves-effect waves-light black white-text hide-on-med-and-down"><i class="material-icons left">favorite</i>Add to favlist</button>
+						<button class="btn waves-effect waves-light black white-text hide-on-large-only"><i class="material-icons center">favorite</i></button>
 					</div>
 				</div>
 			</div>
@@ -50,7 +52,7 @@
 			<ul class="tabs black">
 				<li class="tab col s4"><a href="#details">Details</a></li>
 				<li class="tab col s4"><a href="#reviews">Reviews</a></li>
-				<li class="tab col s4"><a href="#related">Related searches</a></li>
+				<li class="tab col s4"><a href="#related">Related</a></li>
 			</ul>
 		</div>
 		<div id="details" class="col s12 tabPanel">
@@ -81,7 +83,7 @@
 					<li class="modal" id="deleteReviewModal{{$review->id}}">
 						<div class="modal-content">
 							<h5 class="center">Are you sure you want to delete this review?</h5>
-							<ul class="collection">
+							<ul class="collection hide-on-med-and-down">
 								<li class="collection-item">
 									<div>
 										<p class="black-text left"><strong>{{$review->user->name}}</strong></p>
@@ -96,7 +98,7 @@
 							<form action="{{route('deleteReview', ['id' => $review->id])}}" method="POST">
 								@csrf
 								@method('DELETE')
-								<div class="input-field center-align">
+								<div class="input-field center-align paddingTop30Small">
 									<button class="btn waves-effect waves-light red white-text">Yes, delete</button>
 								</div>
 							</form>
@@ -160,19 +162,25 @@
 					@foreach($products as $item)
 					<div class="card horizontal darkGrey white-text">
 						<div class="card-image">
-							<a href="{{route('viewProduct', ['id' => $item->id])}}" class="waves-effect waves-light"><img src="/uploads/products/{{$item->productimage}}"></a>
+							<a href="{{route('viewProduct', ['id' => $item->id])}}" class="waves-effect waves-light"><img src="/uploads/products/{{$item->productimage}}" class="relatedSmall"></a>
 						</div>
 						<div class="card-stacked">
-							<div class="card-content center-align">
-								<h5><strong>{{$item->name}}</strong></h5>
+							<div class="card-content center-align paddingAll5Small">
+								<p class="card-title">{{$item->name}}</p>
 								<h6 class="paddingBottom10">BND${{$item->pricing}}</h6>
 								<h6><strong>Availability: <span class="yellow-text">{{$item->stock}}</span></strong></h6>
 								<a class="btn-floating halfway-fab waves-effect waves-light yellow tooltipped hide-on-med-and-down" data-position="top" data-tooltip="Add to favlist"><i class="material-icons black-text">favorite</i></a>
 							</div>
-							<div class="card-action black paddingAll10Small">
+							<div class="card-action black paddingAll5Small">
 								<a href="#" class="white-text smallFont left hide-on-med-and-down">Add to cart</a>
-								<a href="#"><i class="material-icons right white-text hide-on-large-only">favorite</i></a>
-								<a href="#"><i class="material-icons left white-text hide-on-large-only">add_shopping_cart</i></a>
+								<div class="row margin0">
+									<div class="col s6 center-align">
+										<a href="#"><i class="material-icons white-text hide-on-large-only">favorite</i></a>
+									</div>
+									<div class="col s6 center-align">
+										<a href="#"><i class="material-icons white-text hide-on-large-only">add_shopping_cart</i></a>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>

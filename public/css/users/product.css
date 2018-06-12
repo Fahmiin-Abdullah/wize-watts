@@ -23,3 +23,14 @@ button:hover {
 	background-color: #eee;
 	margin-top: 1px;
 }
+
+
+
+
+
+
+@media only screen and (max-width: 600px) {
+	.relatedSmall {
+		height: 200px;
+	}
+}

@@ -1,0 +1,10 @@
+.info {
+	width: 300px !important;
+	height: 300px !important;
+	border-radius: 25px;
+	cursor: pointer;
+}
+
+.info:hover {
+	box-shadow: 0 0 30px 5px yellow;
+}

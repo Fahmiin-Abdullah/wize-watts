@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->string('tags')->nullable();
             $table->string('pricing');
             $table->string('shipping')->nullable();
+            $table->text('details')->nullable();
             $table->timestamps();
         });
     }

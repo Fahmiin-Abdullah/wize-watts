@@ -1,5 +1,5 @@
 //JAVASCRIPT
-const openFileProfile = function(event) {
+const openFileProduct = function(event) {
 	const input = event.target;
 
 	const reader = new FileReader();
@@ -27,11 +27,11 @@ const openFileEdit = function(event) {
 //JQUERY
 $(document).ready(function() {
 	$('#newProduct').on('click', function() {
-		$('#newProductPanel').toggle(500);
+		$('#newProductPanel').slideToggle(500);
 	});
 
 	$('.getEdit').on('click', function() {
-		$('#editProductPanel').hide(500);
+		$('#editProductPanel').slideUp(500);
 		const id = $(this).data('id');
 		setTimeout(function() {
 			fetch('/admin/products/getEdit/'+id)
@@ -45,13 +45,14 @@ $(document).ready(function() {
 				$('.editStock > input').attr('value', dataArray[4]);
 				$('.editShipping > input').attr('value', dataArray[5]);
 				$('#editProductImage').attr('src', '/uploads/products/'+dataArray[6]);
-				$('#editProductPanel').show(500);
+				$('.editDetails > textarea').text(dataArray[7]);
+				$('#editProductPanel').slideDown(500);
 			});
 		}, 510);
 	});
 
 	$(document).on('click', '.cancelEdit', function(e) {
 		e.preventDefault();
-		$('#editProductPanel').hide(500);
+		$('#editProductPanel').slideUp(500);
 	});
 });

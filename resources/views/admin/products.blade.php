@@ -27,30 +27,38 @@
 						<label for="description">Product description</label>
 					</div>
 					<div class="row">
-						<div class="col m6">
+						<div class="col m4">
 							<div class="input-field">
 								<input type="number" step="0.01" name="pricing" required>
-								<label for="pricing">Product pricing BND</label>
+								<label for="pricing">Pricing BND</label>
 							</div>
 						</div>
-						<div class="col m6">
+						<div class="col m4">
 							<div class="input-field">
 								<input type="number" name="stock" required>
 								<label for="stock">Availability</label>
 							</div>
 						</div>
+						<div class="col m4">
+							<div class="input-field">
+								<input type="number" step="0.01" name="shipping" required>
+								<label for="shipping">Shipping BND</label>
+							</div>
+						</div>
 					</div>
-					<div class="input-field">
-						<input type="number" step="0.01" name="shipping" required>
-						<label for="shipping">Shipping rates BND</label>
-					</div>	
 				</div>
 				<div class="col m6 center-align">
-					<img class="marginBottom10 marginLeft30" id="productimage">
-					<input type="file" name="productimage" onchange="openFileProfile(event)" class="hidden" id="fileUpload">
+					<img class="marginBottom10 marginLeft50" id="productimage">
+					<input type="file" name="productimage" onchange="openFileProduct(event)" class="hidden" id="fileUpload">
 					<label for="fileUpload">
-						<a class="btn waves-effect waves-light blue white-text marginLeft30"><i class="material-icons left">file_upload</i>upload image</a>
+						<a class="btn waves-effect waves-light blue white-text marginLeft50"><i class="material-icons left">file_upload</i>upload image</a>
 					</label>
+				</div>
+				<div class="col m12">
+					<div class="input-field">
+						<textarea class="materialize-textarea" name="details"></textarea>
+						<label for="details">Add details to the product</label>
+					</div>
 				</div>
 			</div>
 			<div class="input-field center-align">
@@ -72,27 +80,34 @@
 						<textarea class="materialize-textarea" name="description"></textarea>
 					</div>
 					<div class="row">
-						<div class="col m6">
+						<div class="col m4">
 							<div class="input-field editPricing">
 								<input type="number" step="0.01" name="pricing" required>
 							</div>
 						</div>
-						<div class="col m6">
+						<div class="col m4">
 							<div class="input-field editStock">
 								<input type="number" name="stock" required>
 							</div>
 						</div>
+						<div class="col m4">
+							<div class="input-field editShipping">
+								<input type="number" step="0.01" name="shipping" required>
+							</div>	
+						</div>
 					</div>
-					<div class="input-field editShipping">
-						<input type="number" step="0.01" name="shipping" required>
-					</div>	
 				</div>
 				<div class="col m6 center-align">
-					<img class="marginBottom10 marginLeft30" id="editProductImage">
+					<img class="marginBottom10 marginLeft50" id="editProductImage">
 					<input type="file" name="productimage" onchange="openFileEdit(event)" class="hidden" id="fileUpload2">
 					<label for="fileUpload2">
-						<a class="btn waves-effect waves-light blue white-text marginLeft30"><i class="material-icons left">file_upload</i>upload image</a>
+						<a class="btn waves-effect waves-light blue white-text marginLeft50"><i class="material-icons left">file_upload</i>upload image</a>
 					</label>
+				</div>
+				<div class="col m12">
+					<div class="input-field editDetails">
+						<textarea class="materialize-textarea" name="details"></textarea>
+					</div>
 				</div>
 			</div>
 			<div class="input-field center-align">
@@ -119,7 +134,7 @@
 		<tbody>
 			@foreach($products as $product)
 			<tr>
-				<td>{{$product->name}}</td>
+				<td><a href="{{route('viewProduct', ['id' => $product->id])}}">{{$product->name}}</a></td>
 				<td class="center">{{$product->stock}}</td>
 				<td class="center">{{$product->pricing}}</td>
 				<td class="center"><em>{{($product->tags) ? $product->tags : 'NULL'}}</em></td>
@@ -127,7 +142,7 @@
 				<td class="center">
 					<div class="row paddingTop10 paddingBottom10 margin0">
 						<div class="col s6 m6">
-							<a href="#deleteProduct" class="btn waves-effect waves-light red white-text right modal-trigger"><i class="material-icons left">delete_forever</i>Delete</a>
+							<a href="#deleteProduct{{$product->id}}" class="btn waves-effect waves-light red white-text right modal-trigger"><i class="material-icons left">delete_forever</i>Delete</a>
 						</div>
 						<div class="col s6 m6">
 							<a class="btn waves-effect waves-light blue white-text left getEdit" data-id="{{$product->id}}" id="editButton{{$product->id}}"><i class="material-icons left">edit</i>Edit</a>
@@ -135,22 +150,22 @@
 					</div>
 				</td>
 			</tr>
+
+			<div class="modal" id="deleteProduct{{$product->id}}">
+				<div class="modal-content">
+					<h5 class="center">Are you sure you want to delete this product?</h5>
+					<form action="{{route('deleteProduct', ['id' => $product->id])}}" method="POST">
+						@csrf
+						@method('DELETE')
+						<div class="input-field center-align paddingTop30">
+							<button class="btn waves-effect waves-light red white-text"><i class="material-icons left">delete_forever</i>Yes, Delete</button>
+						</div>
+					</form>
+				</div>
+			</div>
 			@endforeach
 		</tbody>
 	</table>
-</div>
-
-<div class="modal" id="deleteProduct">
-	<div class="modal-content">
-		<h5 class="center">Are you sure you want to delete this product?</h5>
-		<form action="{{route('deleteProduct', ['id' => $product->id])}}" method="POST">
-			@csrf
-			@method('DELETE')
-			<div class="input-field center-align paddingTop30">
-				<button class="btn waves-effect waves-light red white-text"><i class="material-icons left">delete_forever</i>Yes, Delete</button>
-			</div>
-		</form>
-	</div>
 </div>
 
 @endsection

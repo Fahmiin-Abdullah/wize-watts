@@ -1,0 +1,25 @@
+button:hover {
+	background-color: yellow !important;
+	color: #000 !important;
+}
+
+.tab a {
+	color: #fff !important;
+}
+
+.tab a:hover {
+	color: yellow !important;
+}
+
+.tab a:focus {
+	color: yellow !important;
+}
+
+.tabs .tab a:focus, .tabs .tab a:focus.active {
+	background-color: rgba(255, 255, 0, 0.1) !important;
+}
+
+.tabPanel {
+	background-color: #eee;
+	margin-top: 1px;
+}

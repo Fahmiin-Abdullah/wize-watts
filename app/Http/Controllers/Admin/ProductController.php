@@ -17,7 +17,8 @@ class ProductController extends Controller
     		'pricing' => 'required',
     		'stock' => 'required',
     		'shipping' => 'required',
-    		'productimage' => 'required|file'
+    		'productimage' => 'required|file',
+    		'details' => 'required'
     	]);
 
     	$product = new Product;
@@ -32,9 +33,21 @@ class ProductController extends Controller
         Image::make($productimage)->resize(300, 300)->save(public_path('/uploads/products/'.$filename));
         $product->productimage = $filename;
 
+        $product->details = $request->input('details');
+
         $product->save();
 
         return back()->with('session_code', 'newProduct');
+    }
+
+    public function viewProduct($id)
+    {
+    	$products = Product::paginate(6);
+    	$product = Product::find($id);
+
+    	return view('users.product')
+    			->with('products', $products)
+    			->with('product', $product);
     }
 
     public function getEdit(Request $request, $id)
@@ -47,7 +60,8 @@ class ProductController extends Controller
     	$stock = $product->stock;
     	$shipping = $product->shipping;
     	$image = $product->productimage;
-    	$data = [$id, $name, $description, $pricing, $stock, $shipping, $image];
+    	$details = $product->details;
+    	$data = [$id, $name, $description, $pricing, $stock, $shipping, $image, $details];
 
     	return response(json_encode($data));
     }
@@ -60,7 +74,8 @@ class ProductController extends Controller
     		'pricing' => 'required',
     		'stock' => 'required',
     		'shipping' => 'required',
-    		'productimage' => 'file'
+    		'productimage' => 'file',
+    		'details' => 'required'
     	]);
 
     	$product = Product::find($id);
@@ -76,6 +91,8 @@ class ProductController extends Controller
 	        Image::make($productimage)->resize(300, 300)->save(public_path('/uploads/products/'.$filename));
 	        $product->productimage = $filename;
 	    }
+
+	    $product->details = $request->input('details');
 
         $product->save();
 

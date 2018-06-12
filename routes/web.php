@@ -28,6 +28,10 @@ Route::post('/password/reset', 'Auth\ResetPasswordController@reset');
 
 //SHOP PAGE
 Route::get('/shop', 'ShopController@showPage')->name('shopPage');
+Route::get('/products/view/{id}', 'Admin\ProductController@viewProduct')->name('viewProduct');
+Route::post('/products/review/{id}', 'ReviewController@writeReview')->name('writeReview');
+Route::post('/products/review/edit/{id}', 'ReviewController@editReview')->name('editReview');
+Route::delete('/products/review/delete/{id}', 'ReviewController@deleteReview')->name('deleteReview');
 
 
 
@@ -37,4 +41,4 @@ Route::get('/admin/products', 'Admin\AdminController@showProducts')->name('admin
 Route::post('/admin/products/new', 'Admin\ProductController@createProduct')->name('createProduct');
 Route::get('/admin/products/getEdit/{id}', 'Admin\ProductController@getEdit')->name('getEditProduct');
 Route::post('/admin/products/edit/{id}', 'Admin\ProductController@editProduct')->name('editProduct');
-Route::post('/admin/products/delete/{id}', 'Admin\ProductController@deleteProduct')->name('deleteProduct');
+Route::delete('/admin/products/delete/{id}', 'Admin\ProductController@deleteProduct')->name('deleteProduct');

@@ -61,7 +61,7 @@
 				<div class="col s6 m4 productCard">
 					<div class="card margin0">
 						<div class="card-image">
-							<a href="" class="waves-effect waves-light"><img src="/uploads/products/{{$product->productimage}}"></a>
+							<a href="{{route('viewProduct', ['id' => $product->id])}}" class="waves-effect waves-light"><img src="/uploads/products/{{$product->productimage}}"></a>
 						</div>
 						<div class="card-content center-align padding0">
 							<h5 class="smallFont"><strong>{{$product->name}}</strong></h5>

@@ -27,3 +27,22 @@
         M.toast({html: 'Product deleted successfully'})
     </script>
 @endif
+
+@if(!empty(Session::get('session_code')) && Session::get('session_code') == 'reviewSuccess')
+    <script>
+        M.toast({html: 'Review posted successfully'})
+    </script>
+@endif
+
+@if(!empty(Session::get('session_code')) && Session::get('session_code') == 'editReview')
+    <script>
+        M.toast({html: 'Review updated successfully'})
+    </script>
+@endif
+
+@if(!empty(Session::get('session_code')) && Session::get('session_code') == 'deleteReview')
+    <script>
+        M.toast({html: 'Review deleted successfully'})
+    </script>
+@endif
+

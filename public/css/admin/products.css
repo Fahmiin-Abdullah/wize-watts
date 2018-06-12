@@ -10,11 +10,11 @@ td {
 #productimage {
 	background-image: url(../../uploads/products/default_product.jpg);
 	background-size: cover;
-	width: 300px;
-	height: 300px;
+	width: 250px;
+	height: 250px;
 }
 
 #editProductImage {
-	width: 300px;
-	height: 300px;
+	width: 250px;
+	height: 250px;
 }

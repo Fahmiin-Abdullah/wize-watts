@@ -35,6 +35,8 @@ Route::delete('/products/review/delete/{id}', 'ReviewController@deleteReview')->
 
 //PROFILE PAGE
 Route::get('/profile', 'ProfileController@showProfile')->name('profilePage');
+Route::post('/profile/edit/info/{id}', 'ProfileController@editInfo')->name('editInfo');
+Route::post('/profile/edit/address/{id}', 'ProfileController@editAddress')->name('editAddress');
 
 
 

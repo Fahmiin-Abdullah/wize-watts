@@ -46,3 +46,14 @@
     </script>
 @endif
 
+@if(!empty(Session::get('session_code')) && Session::get('session_code') == 'infoUpdate')
+    <script>
+        M.toast({html: 'Info updated successfully'})
+    </script>
+@endif
+
+@if(!empty(Session::get('session_code')) && Session::get('session_code') == 'addressUpdate')
+    <script>
+        M.toast({html: 'Address updated successfully'})
+    </script>
+@endif

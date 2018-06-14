@@ -37,15 +37,15 @@ $(document).ready(function() {
 			fetch('/admin/products/getEdit/'+id)
 			.then((res) => res.text())
 			.then((data) => {
-				let dataArray = JSON.parse(data);
-				$('#editProductPanel > form').attr('action', '/admin/products/edit/' + dataArray[0]);
-				$('.editName > input').attr('value', dataArray[1]);
-				$('.editDescription > textarea').text(dataArray[2]);
-				$('.editPricing > input').attr('value', dataArray[3]);
-				$('.editStock > input').attr('value', dataArray[4]);
-				$('.editShipping > input').attr('value', dataArray[5]);
-				$('#editProductImage').attr('src', '/uploads/products/'+dataArray[6]);
-				$('.editDetails > textarea').text(dataArray[7]);
+				let info = JSON.parse(data);
+				$('#editProductPanel > form').attr('action', '/admin/products/edit/' + info.id);
+				$('.editName > input').attr('value', info.name);
+				$('.editDescription > textarea').text(info.description);
+				$('.editPricing > input').attr('value', info.pricing);
+				$('.editStock > input').attr('value', info.stock);
+				$('.editShipping > input').attr('value', info.shipping);
+				$('#editProductImage').attr('src', '/uploads/products/'+info.productimage);
+				$('.editDetails > textarea').text(info.details);
 				$('#editProductPanel').slideDown(500);
 			});
 		}, 510);

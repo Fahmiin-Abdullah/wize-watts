@@ -5,6 +5,7 @@
         <meta name="csrf-token" content="{{csrf_token()}}">
         <meta charset="UTF-8">
         <title>Wize Watts | Admin</title>
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="{{asset('css/materialize.min.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('css/admin/app.css')}}">

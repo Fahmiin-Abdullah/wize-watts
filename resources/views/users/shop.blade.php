@@ -66,13 +66,33 @@
 						<div class="card-content center-align padding0">
 							<h5 class="smallFont"><strong>{{$product->name}}</strong></h5>
 							<h6 class="paddingBottom10">BND${{$product->pricing}}</h6>
-							<a class="btn-floating halfway-fab waves-effect waves-light yellow tooltipped hide-on-med-and-down" data-position="top" data-tooltip="Add to favlist"><i class="material-icons black-text">favorite</i></a>
+							<a class="btn-floating halfway-fab waves-effect waves-light
+							@if(count($user->favorites))
+							@foreach($user->favorites as $favorite)
+								@if($favorite->product_id != $product->id)
+									yellow
+								@endif
+							@endforeach
+							@else
+								yellow
+							@endif
+							tooltipped hide-on-med-and-down favorite" data-position="top" data-tooltip="Add to favlist" data-favid="{{$product->id}}" id="fav{{$product->id}}"><i class="material-icons black-text">favorite</i></a>
 						</div>
 						<div class="card-action black paddingAll5Small">
 							<a href="#" class="white-text smallFont left hide-on-med-and-down">Add to cart</a>
 							<div class="row margin0">
 								<div class="col s6 center-align">
-									<a href="#"><i class="material-icons white-text hide-on-large-only">favorite</i></a>
+									<a data-favid="{{$product->id}}" class="favorite" id="fav{{$product->id}}"><i class="material-icons
+									@if(count($user->favorites))
+									@foreach($user->favorites as $favorite)
+										@if($favorite->product_id != $product->id)
+										yellow
+										@endif
+									@endforeach
+									@else
+										yellow
+									@endif
+									hide-on-large-only">favorite</i></a>
 								</div>
 								<div class="col s6 center-align">
 									<a href="#"><i class="material-icons white-text hide-on-large-only">add_shopping_cart</i></a>

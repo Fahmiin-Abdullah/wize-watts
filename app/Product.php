@@ -10,4 +10,9 @@ class Product extends Model
 	{
 		return $this->hasMany('App\Review');
 	}
+
+	public function favorites()
+	{
+		return $this->hasMany('App\Favorite');
+	}
 }

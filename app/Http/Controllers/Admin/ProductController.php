@@ -53,17 +53,8 @@ class ProductController extends Controller
     public function getEdit(Request $request, $id)
     {
     	$product = Product::find($id);
-    	$id = $product->id;
-    	$name = $product->name;
-    	$description = $product->description;
-    	$pricing = $product->pricing;
-    	$stock = $product->stock;
-    	$shipping = $product->shipping;
-    	$image = $product->productimage;
-    	$details = $product->details;
-    	$data = [$id, $name, $description, $pricing, $stock, $shipping, $image, $details];
 
-    	return response(json_encode($data));
+    	return response(json_encode($product));
     }
 
     public function editProduct(Request $request, $id)

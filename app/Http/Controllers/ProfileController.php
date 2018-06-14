@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Favorite;
 use Auth;
 
 class ProfileController extends Controller
@@ -13,6 +14,13 @@ class ProfileController extends Controller
 		return view('users.profile');
 	}
 
+	public function fetchInfo($id)
+	{
+		$user = User::find($id);
+
+		return response(json_encode($user));
+	}
+	
 	public function editInfo(Request $request, $id)
 	{
 		$user = User::find($id);

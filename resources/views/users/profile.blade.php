@@ -127,6 +127,33 @@
 		<div class="card-panel black white-text">
 			<h5>My favlist<span class="right close"><i class="material-icons">close</i></span></h5>
 			<hr>
+			<div class="row paddingTop30 paddingBottom30">
+				@foreach($user->favorites->sortByDesc('id') as $fav)
+				<div class="col s12 m4 productCard" id="{{$fav->product->id}}">
+					<div class="card margin0">
+						<div class="card-image">
+							<a href="{{route('viewProduct', ['id' => $fav->product->id])}}" class="waves-effect waves-light"><img src="/uploads/products/{{$fav->product->productimage}}"></a>
+						</div>
+						<div class="card-content center-align padding0">
+							<h5 class="smallFont black-text"><strong>{{$fav->product->name}}</strong></h5>
+							<h6 class="paddingBottom10 black-text">BND${{$fav->product->pricing}}</h6>
+							<a class="btn-floating halfway-fab waves-effect waves-light tooltipped hide-on-med-and-down favorite" data-position="top" data-tooltip="Add to favlist" data-favid="{{$fav->product->id}}" id="fav{{$fav->product->id}}" data-id="#{{$fav->product->id}}"><i class="material-icons black-text">favorite</i></a>
+						</div>
+						<div class="card-action darkGrey paddingAll5Small">
+							<a href="#" class="white-text smallFont left hide-on-med-and-down">Add to cart</a>
+							<div class="row margin0">
+								<div class="col s6 center-align">
+									<a data-favid="{{$fav->product->id}}" class="favorite yellow-text" data-id="#{{$fav->product->id}}"><i class="material-icons hide-on-large-only">favorite</i></a>
+								</div>
+								<div class="col s6 center-align">
+									<a href="#"><i class="material-icons white-text hide-on-large-only">add_shopping_cart</i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>	
+				@endforeach
+			</div>
 		</div>
 	</div>
 </div>

@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="container90">
-	<h4 class="left">Products</h4>
+	<h5 class="left">Products</h5>
 	<button class="btn waves-effect waves-light green white-text right" id="newProduct"><i class="material-icons left">add</i>Add new product</button>
 </div>
 

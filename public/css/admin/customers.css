@@ -1,0 +1,8 @@
+.view, .close {
+	cursor: pointer;
+}
+
+#customerPanel {
+	border-radius: 10px;
+	background-color: #fff;
+}

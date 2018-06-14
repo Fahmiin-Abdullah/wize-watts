@@ -22,8 +22,8 @@
 	}
 
 	.productCard img {
-		width: 100px;
-		height: 125px;
+		width: 211px !important;
+		height: 200px;
 	}
 
 	.smallFont {

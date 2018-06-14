@@ -82,17 +82,16 @@
 							<a href="#" class="white-text smallFont left hide-on-med-and-down">Add to cart</a>
 							<div class="row margin0">
 								<div class="col s6 center-align">
-									<a data-favid="{{$product->id}}" class="favorite" id="fav{{$product->id}}"><i class="material-icons
+									<a data-favid="{{$product->id}}" class="favorite
 									@if(count($user->favorites))
 									@foreach($user->favorites as $favorite)
-										@if($favorite->product_id != $product->id)
-										yellow
+										@if($favorite->product_id == $product->id)
+										yellow-text
 										@endif
 									@endforeach
 									@else
-										yellow
 									@endif
-									hide-on-large-only">favorite</i></a>
+									"><i class="material-icons hide-on-large-only">favorite</i></a>
 								</div>
 								<div class="col s6 center-align">
 									<a href="#"><i class="material-icons white-text hide-on-large-only">add_shopping_cart</i></a>

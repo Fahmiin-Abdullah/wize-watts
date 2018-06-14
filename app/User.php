@@ -36,4 +36,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Favorite');
     }
+
+    public function mailList()
+    {
+        return $this->hasOne('App\MailingList');
+    }
 }

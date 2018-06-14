@@ -51,6 +51,9 @@ Route::post('/admin/products/new', 'Admin\ProductController@createProduct')->nam
 Route::get('/admin/products/getEdit/{id}', 'Admin\ProductController@getEdit')->name('getEditProduct');
 Route::post('/admin/products/edit/{id}', 'Admin\ProductController@editProduct')->name('editProduct');
 Route::delete('/admin/products/delete/{id}', 'Admin\ProductController@deleteProduct')->name('deleteProduct');
-
 Route::get('/admin/customers', 'Admin\AdminController@showCustomers')->name('adminCustomers');
 Route::get('/admin/customer/{id}', 'Admin\AdminController@getCustomer')->name('getCustomer');
+Route::post('/admin/mailinglist', 'Admin\AdminController@addMailingList')->name('addMailingList');
+Route::post('/admin/mailinglist/{id}', 'Admin\AdminController@addMailingList')->name('addMailingListReg');
+Route::get('/admin/mailinglist', 'Admin\AdminController@showMailList')->name('showMailList');
+Route::delete('/admin/mailinglist/delete/{id}', 'Admin\AdminController@deleteMail')->name('deleteMail');

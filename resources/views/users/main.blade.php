@@ -113,7 +113,12 @@
 	<h4 class="white-text center margin0 paddingTop50 paddingBottom30 paddingLeft20Small paddingRight20Small">Join our mailing list for the latest and greatest news!</h4>
 	<div class="container">
 		<div class="row paddingTop15 margin0 section center-align">
-			<form action="" method="POST">
+			@auth
+			<form action="{{route('addMailingListReg', ['id' => $user->id])}}" method="POST">
+			@else
+			<form action="{{route('addMailingList')}}" method="POST">
+			@endauth
+				@csrf
 				<div class="col s12 m9">
 					<div class="input-field">
 						<input class="mailList" type="search" name="mailList" placeholder="Enter your email here" required>

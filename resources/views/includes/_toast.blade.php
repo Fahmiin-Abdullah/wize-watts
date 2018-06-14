@@ -57,3 +57,21 @@
         M.toast({html: 'Address updated successfully'})
     </script>
 @endif
+
+@if(!empty(Session::get('session_code')) && Session::get('session_code') == 'mailSubscribed')
+    <script>
+        M.toast({html: 'Congratulations, you are now in our mailing list!'})
+    </script>
+@endif
+
+@if(!empty(Session::get('session_code')) && Session::get('session_code') == 'mailUpdate')
+    <script>
+        M.toast({html: 'Your email has been updated!'})
+    </script>
+@endif
+
+@if(!empty(Session::get('session_code')) && Session::get('session_code') == 'deleteMail')
+    <script>
+        M.toast({html: 'Email removed successfully'})
+    </script>
+@endif

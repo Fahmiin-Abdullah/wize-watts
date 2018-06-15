@@ -30,52 +30,46 @@
 			</div>
 			<h5 class="paddingBottom10">Our products</h5>
 			<ul class="collapsible productsSidebar">
+				@foreach($categories as $category)
 				<li>
-					<div class="collapsible-header darkGrey"><i class="material-icons"></i>Arduino Things</div>
+					<div class="collapsible-header darkGrey"><i class="material-icons"></i>{{$category->category}}</div>
 					<div class="collapsible-body subProduct">
 						<div class="collection">
-							<a href="#" class="collection-item darkGrey white-text waves-effect waves-light">Modules</a>
-							<a href="#" class="collection-item darkGrey white-text waves-effect waves-light">Shields</a>
-							<a href="#" class="collection-item darkGrey white-text waves-effect waves-light">Accessories</a>
-							<a href="#" class="collection-item darkGrey white-text waves-effect waves-light">Bundled kits</a>
-							<a href="#" class="collection-item darkGrey white-text waves-effect waves-light">Courses</a>
+							@foreach($subcategories as $subcategory)
+							@if($subcategory->category_id == $category->id)
+							<a href="/shop/catalog/{{$category->id}}/{{$subcategory->id}}" class="collection-item darkGrey white-text waves-effect waves-light catalog">{{$subcategory->subcategory}}</a>
+							@endif
+							@endforeach
 						</div>
 					</div>
 				</li>
-				<li>
-					<div class="collapsible-header darkGrey"><i class="material-icons"></i>Electrical Things</div>
-					<div class="collapsible-body subProduct">
-						<div class="collection">
-							<a href="#" class="collection-item darkGrey white-text waves-effect waves-light">Components</a>
-							<a href="#" class="collection-item darkGrey white-text waves-effect waves-light">Equipment</a>
-							<a href="#" class="collection-item darkGrey white-text waves-effect waves-light">Accessories</a>
-						</div>
-					</div>
-				</li>
+				@endforeach
 			</ul>
 		</div>
 		<div class="col s12 m9">
-			<h5 class="paddingBottom10 white-text">Arduino Things > Modules</h5>
 			<div class="row black-text">
-				@foreach($products as $product)
+				@foreach($products->sortByDesc('id') as $product)
 				<div class="col s6 m4 productCard">
+					<h6 class="white-text paddingBottom20 paddingLeft5">{{$product->category->category}} / {{$product->subcategory->subcategory}}</h6>
 					<div class="card margin0">
 						<div class="card-image">
-							<a href="{{route('viewProduct', ['id' => $product->id])}}" class="waves-effect waves-light"><img src="/uploads/products/{{$product->productimage}}"></a>
+							<a href="/products/view/{{$product->id}}" class="waves-effect waves-light"><img src="/uploads/products/{{$product->productimage}}"></a>
 						</div>
 						<div class="card-content center-align padding0">
 							<h5 class="smallFont"><strong>{{$product->name}}</strong></h5>
 							<h6 class="paddingBottom10">BND${{$product->pricing}}</h6>
-							<a class="btn-floating halfway-fab waves-effect waves-light
-							@if(count($user->favorites))
-							@foreach($user->favorites as $favorite)
-								@if($favorite->product_id != $product->id)
+							<a class="btn-floating halfway-fab waves-effect waves-light yellow
+							@auth
+								@if(count($user->favorites))
+								@foreach($user->favorites as $favorite)
+									@if($favorite->product_id != $product->id)
+										yellow
+									@endif
+								@endforeach
+								@else
 									yellow
 								@endif
-							@endforeach
-							@else
-								yellow
-							@endif
+							@endauth
 							tooltipped hide-on-med-and-down favorite" data-position="top" data-tooltip="Add to favlist" data-favid="{{$product->id}}" id="fav{{$product->id}}"><i class="material-icons black-text">favorite</i></a>
 						</div>
 						<div class="card-action black paddingAll5Small">
@@ -83,14 +77,16 @@
 							<div class="row margin0">
 								<div class="col s6 center-align">
 									<a data-favid="{{$product->id}}" class="favorite
-									@if(count($user->favorites))
-									@foreach($user->favorites as $favorite)
-										@if($favorite->product_id == $product->id)
-										yellow-text
+									@auth	
+										@if(count($user->favorites))
+										@foreach($user->favorites as $favorite)
+											@if($favorite->product_id == $product->id)
+											yellow-text
+											@endif
+										@endforeach
+										@else
 										@endif
-									@endforeach
-									@else
-									@endif
+									@endauth
 									"><i class="material-icons hide-on-large-only">favorite</i></a>
 								</div>
 								<div class="col s6 center-align">
@@ -105,4 +101,8 @@
 		</div>
 	</div>
 </div>
+@endsection
+
+@section('js')
+	<script src="{{asset('js/users/shop.js')}}"></script>
 @endsection

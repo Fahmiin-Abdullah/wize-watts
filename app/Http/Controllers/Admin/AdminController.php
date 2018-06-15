@@ -7,15 +7,21 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Product;
 use App\MailingList;
+use App\Category;
+use App\Subcategory;
 
 class AdminController extends Controller
 {
 	public function showProducts()
 	{
 		$products = Product::paginate(15);
+		$categories = Category::all();
+		$subcategories = Subcategory::all();
 
 		return view('admin.products')
-					->with('products', $products);
+					->with('products', $products)
+					->with('categories', $categories)
+					->with('subcategories', $subcategories);
 	}
 
 	public function showCustomers()

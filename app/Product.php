@@ -15,4 +15,14 @@ class Product extends Model
 	{
 		return $this->hasMany('App\Favorite');
 	}
+
+	public function category()
+	{
+		return $this->belongsTo('App\Category');
+	}
+
+	public function subcategory()
+	{
+		return $this->belongsTo('App\Subcategory');
+	}
 }

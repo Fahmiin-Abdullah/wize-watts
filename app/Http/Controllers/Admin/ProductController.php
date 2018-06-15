@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Product;
+use App\Category;
+use App\Subcategory;
 use Image;
 
 class ProductController extends Controller
@@ -18,6 +20,8 @@ class ProductController extends Controller
     		'stock' => 'required',
     		'shipping' => 'required',
     		'productimage' => 'required|file',
+            'category_id' => 'required',
+            'subcategory_id' => 'required',
     		'details' => 'required'
     	]);
 
@@ -33,6 +37,8 @@ class ProductController extends Controller
         Image::make($productimage)->resize(300, 300)->save(public_path('/uploads/products/'.$filename));
         $product->productimage = $filename;
 
+        $product->category_id = $request->input('category_id');
+        $product->subcategory_id = $request->input('subcategory_id');
         $product->details = $request->input('details');
 
         $product->save();
@@ -48,6 +54,13 @@ class ProductController extends Controller
     	return view('users.product')
     			->with('products', $products)
     			->with('product', $product);
+    }
+
+    public function getSuboptions($id)
+    {
+        $suboptions = Subcategory::where('category_id', $id)->get();
+
+        return response(json_encode($suboptions));
     }
 
     public function getEdit(Request $request, $id)
@@ -66,6 +79,8 @@ class ProductController extends Controller
     		'stock' => 'required',
     		'shipping' => 'required',
     		'productimage' => 'file',
+            'category_id' => 'required',
+            'subcategory_id' => 'required',
     		'details' => 'required'
     	]);
 
@@ -83,6 +98,8 @@ class ProductController extends Controller
 	        $product->productimage = $filename;
 	    }
 
+        $product->category_id = $request->input('category_id');
+        $product->subcategory_id = $request->input('subcategory_id');
 	    $product->details = $request->input('details');
 
         $product->save();

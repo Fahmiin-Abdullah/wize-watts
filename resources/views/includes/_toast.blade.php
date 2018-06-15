@@ -75,3 +75,27 @@
         M.toast({html: 'Email removed successfully'})
     </script>
 @endif
+
+@if(!empty(Session::get('session_code')) && Session::get('session_code') == 'categoryCreated')
+    <script>
+        M.toast({html: 'Category added successfully'})
+    </script>
+@endif
+
+@if(!empty(Session::get('session_code')) && Session::get('session_code') == 'subcategoryCreated')
+    <script>
+        M.toast({html: 'Subcategory added successfully'})
+    </script>
+@endif
+
+@if(!empty(Session::get('session_code')) && Session::get('session_code') == 'categoryDelete')
+    <script>
+        M.toast({html: 'Category deleted successfully'})
+    </script>
+@endif
+
+@if(!empty(Session::get('session_code')) && Session::get('session_code') == 'subcategoryDelete')
+    <script>
+        M.toast({html: 'Subcategory deleted successfully'})
+    </script>
+@endif

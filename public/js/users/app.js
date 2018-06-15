@@ -23,6 +23,7 @@ $(document).ready(function() {
 	$('.footerWidget').on('click', function(e) {
 		e.preventDefault();
 		const link = $(this).data('reveal');
+		console.log(link);
 		$('.linkReveal').hide(500);
 		$(link).show(500);
 	});

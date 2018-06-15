@@ -28,6 +28,7 @@ Route::post('/password/reset', 'Auth\ResetPasswordController@reset');
 
 //SHOP PAGE
 Route::get('/shop', 'ShopController@showPage')->name('shopPage');
+Route::get('/shop/catalog/{cat}/{subcat}', 'ShopController@getCatalog')->name('getCatalog');
 Route::get('/products/view/{id}', 'Admin\ProductController@viewProduct')->name('viewProduct');
 Route::post('/products/review/{id}', 'ReviewController@writeReview')->name('writeReview');
 Route::post('/products/review/edit/{id}', 'ReviewController@editReview')->name('editReview');
@@ -47,6 +48,7 @@ Route::post('/favorite/{id}', 'ShopController@createFav')->name('createFav');
 //ADMIN
 Route::view('/admin/dashboard', 'admin.dashboard');
 Route::get('/admin/products', 'Admin\AdminController@showProducts')->name('adminProducts');
+Route::get('/admin/products/suboptions/{id}', 'Admin\ProductController@getSuboptions')->name('getSuboptions');
 Route::post('/admin/products/new', 'Admin\ProductController@createProduct')->name('createProduct');
 Route::get('/admin/products/getEdit/{id}', 'Admin\ProductController@getEdit')->name('getEditProduct');
 Route::post('/admin/products/edit/{id}', 'Admin\ProductController@editProduct')->name('editProduct');
@@ -57,3 +59,9 @@ Route::post('/admin/mailinglist', 'Admin\AdminController@addMailingList')->name(
 Route::post('/admin/mailinglist/{id}', 'Admin\AdminController@addMailingList')->name('addMailingListReg');
 Route::get('/admin/mailinglist', 'Admin\AdminController@showMailList')->name('showMailList');
 Route::delete('/admin/mailinglist/delete/{id}', 'Admin\AdminController@deleteMail')->name('deleteMail');
+
+Route::post('/admin/category', 'Admin\CategoriesController@createCategory')->name('createCategory');
+Route::delete('/admin/category/delete/{id}', 'Admin\CategoriesController@deleteCategory')->name('deleteCategory');
+Route::post('/admin/subcategory', 'Admin\CategoriesController@createSubcategory')->name('createSubcategory');
+Route::get('/admin/subcategory/{id}', 'Admin\CategoriesController@getSubcategory')->name('getSubcategory');
+Route::delete('/admin/subcategory/delete/{id}', 'Admin\CategoriesController@deleteSubcategory')->name('deleteSubcategory');

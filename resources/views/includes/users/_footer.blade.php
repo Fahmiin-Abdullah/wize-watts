@@ -10,30 +10,18 @@
 					<a class="waves-effect waves-light darkGrey white-text collection-item">My cart</a>
 				</div>
 			</div>
+			@foreach($categories as $category)
 			<div class="col m3">
-				<h5 class="center yellow-text paddingBottom10">Arduino things</h5>
+				<h5 class="center yellow-text paddingBottom10">{{$category->category}}</h5>
 				<div class="collection darkGrey">
-					<a class="waves-effect waves-light darkGrey white-text collection-item">Modules</a>
-					<a class="waves-effect waves-light darkGrey white-text collection-item">Shields</a>
-					<a class="waves-effect waves-light darkGrey white-text collection-item">Accessories</a>
-					<a class="waves-effect waves-light darkGrey white-text collection-item">Bundled kits</a>
-					<a class="waves-effect waves-light darkGrey white-text collection-item">Courses</a>
+					@foreach($subcategories as $subcategory)
+					@if($subcategory->category_id == $category->id)
+						<a href="/shop/catalog/{{$category->id}}/{{$subcategory->id}}" class="waves-effect waves-light darkGrey white-text collection-item">{{$subcategory->subcategory}}</a>
+					@endif
+					@endforeach
 				</div>
 			</div>
-			<div class="col m3">
-				<h5 class="center yellow-text paddingBottom10">Electrical things</h5>
-				<div class="collection darkGrey">
-					<a class="waves-effect waves-light darkGrey white-text collection-item">Components</a>
-					<a class="waves-effect waves-light darkGrey white-text collection-item">Equipment</a>
-					<a class="waves-effect waves-light darkGrey white-text collection-item">Accessories</a>
-				</div>
-			</div>
-			<div class="col m3">
-				<h5 class="center yellow-text paddingBottom10">Discover things</h5>
-				<div class="collection darkGrey">
-					<a class="waves-effect waves-light darkGrey white-text collection-item"></a>
-				</div>
-			</div>
+			@endforeach
 		</div>
 	</div>
 	<div class="hide-on-large-only">
@@ -42,15 +30,11 @@
 				<div class="col s3 center">
 					<a class="waves-effect waves-light yellow-text footerWidget" data-reveal="#quickLink">Quick links</a>
 				</div>
+				@foreach($categories as $category)
 				<div class="col s3 center">
-					<a class="waves-effect waves-light yellow-text footerWidget" data-reveal="#arduinoLink">Arduino things</a>
+					<a class="waves-effect waves-light yellow-text footerWidget" data-reveal="#footer{{$category->id}}">{{$category->category}}</a>
 				</div>
-				<div class="col s3 center">
-					<a class="waves-effect waves-light yellow-text footerWidget" data-reveal="#electricalLink">Electrical things</a>
-				</div>
-				<div class="col s3 center">
-					<a class="waves-effect waves-light yellow-text footerWidget" data-reveal="#discoverLink">Discover things</a>
-				</div>
+				@endforeach
 			</div>
 			<div class="collection darkGrey linkReveal" id="quickLink">
 				<a href="/" class="waves-effect waves-light darkGrey white-text collection-item">Home</a>
@@ -58,21 +42,16 @@
 				<a class="waves-effect waves-light darkGrey white-text collection-item">About us</a>
 				<a class="waves-effect waves-light darkGrey white-text collection-item">My cart</a>
 			</div>
-			<div class="collection darkGrey linkReveal hidden" id="arduinoLink">
-				<a class="waves-effect waves-light darkGrey white-text collection-item">Modules</a>
-				<a class="waves-effect waves-light darkGrey white-text collection-item">Shields</a>
-				<a class="waves-effect waves-light darkGrey white-text collection-item">Accessories</a>
-				<a class="waves-effect waves-light darkGrey white-text collection-item">Bundled kits</a>
-				<a class="waves-effect waves-light darkGrey white-text collection-item">Courses</a>
+			
+			@foreach($categories as $category)
+			<div class="collection darkGrey linkReveal hidden" id="footer{{$category->id}}">
+				@foreach($subcategories as $subcategory)
+					@if($subcategory->category_id == $category->id)
+					<a href="/shop/catalog/{{$category->id}}/{{$subcategory->id}}" class="waves-effect waves-light darkGrey white-text collection-item">{{$subcategory->subcategory}}</a>
+					@endif
+				@endforeach
 			</div>
-			<div class="collection darkGrey linkReveal hidden" id="electricalLink">
-				<a class="waves-effect waves-light darkGrey white-text collection-item">Components</a>
-				<a class="waves-effect waves-light darkGrey white-text collection-item">Equipment</a>
-				<a class="waves-effect waves-light darkGrey white-text collection-item">Accessories</a>
-			</div>
-			<div class="collection darkGrey linkReveal hidden" id="discoverLink">
-				<a class="waves-effect waves-light darkGrey white-text collection-item"></a>
-			</div>
+			@endforeach
 		</div>
 	</div>
 </div>

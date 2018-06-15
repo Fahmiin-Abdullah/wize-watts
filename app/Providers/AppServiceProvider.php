@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use App\User;
+use App\Category;
+use App\Subcategory;
 use View;
 use Auth;
 
@@ -20,7 +22,11 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
         View::composer(['*'], function($view) {
             $user = Auth::user();
-            $view->with('user', $user);
+            $categories = Category::paginate(3);
+            $subcategories = Subcategory::all();
+            $view->with('user', $user)
+                    ->with('categories', $categories)
+                    ->with('subcategories', $subcategories);
         });
     }
 

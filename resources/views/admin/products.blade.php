@@ -46,6 +46,28 @@
 							</div>
 						</div>
 					</div>
+					<div class="row">
+						<div class="col m6">
+							<div class="input-field">
+								<select name="category_id" onchange="subOptions()" id="select">
+									@foreach($categories as $category)
+									<option value="{{$category->id}}">{{$category->category}}</option>
+									@endforeach
+								</select>
+								<label>Select a category</label>
+							</div>
+						</div>
+						<div class="col m6">
+							<div class="input-field">
+								<select name="subcategory_id" id="selectSub"></select>
+								<label>Select a subcategory</label>
+							</div>
+						</div>
+					</div>
+					<div class="input-field">
+						<input type="text" name="tag">
+						<label for="tag">Tag this item</label>
+					</div>
 				</div>
 				<div class="col m6 center-align">
 					<img class="marginBottom10 marginLeft50" id="productimage">
@@ -95,6 +117,28 @@
 								<input type="number" step="0.01" name="shipping" required>
 							</div>	
 						</div>
+					</div>
+					<div class="row">
+						<div class="col m6">
+							<div class="input-field">
+								<select name="category_id" onchange="subOptions2()" id="select2">
+									@foreach($categories as $category)
+									<option value="{{$category->id}}">{{$category->category}}</option>
+									@endforeach
+								</select>
+								<label>Select a category</label>
+							</div>
+						</div>
+						<div class="col m6">
+							<div class="input-field">
+								<select name="subcategory_id" id="selectSub2"></select>
+								<label>Select a subcategory</label>
+							</div>
+						</div>
+					</div>
+					<div class="input-field">
+						<input type="text" name="tag">
+						<label for="tag">Tag this item</label>
 					</div>
 				</div>
 				<div class="col m6 center-align">
@@ -168,6 +212,106 @@
 	</table>
 </div>
 
+<div class="container90 paddingTop50 paddingBottom20">
+	<div class="row">
+		<div class="col m4">
+			<div class="center-align">
+				<a class="btn waves-effect waves-light green white-text category" data-reveal="#addCategory"><i class="material-icons left">add</i>Add new category</a>
+			</div>
+			<div class="hidden paddingTop20" id="addCategory">
+				<form action="{{route('createCategory')}}" method="POST" class="paddingTop10">
+					@csrf
+					<div class="row">
+						<div class="col m9">
+							<div class="input-field">
+								<input type="text" name="category" required>
+								<label for="category">Enter a new category</label>
+							</div>
+						</div>
+						<div class="col m3">
+							<div class="input-field center-align">
+								<button class="btn waves-effect waves-light green white-text"><i class="material-icons">local_offer</i></button>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="collection marginTop30">
+				@foreach($categories as $category)
+				<div class="row margin0">
+					<div class="col m10 padding0">
+						<a class="collection-item categoryLink" data-id="{{$category->id}}">{{$category->category}}<span class="right new badge" data-badge-caption="">{{count($category->subcategories)}}</span></a>
+					</div>
+					<div class="col m2 padding0 center-align white paddingTop13">
+						<a href="#categoryModal{{$category->id}}" class="close red-text center-align modal-trigger"><i class="material-icons center">close</i></a>
+					</div>
+				</div>
+
+				<div class="modal" id="categoryModal{{$category->id}}">
+					<div class="modal-content">
+						<h5 class="center">Are you sure you want to delete this category?</h5>
+						<form action="{{route('deleteCategory', ['id' => $category->id])}}" method="POST">
+							@csrf
+							@method('DELETE')
+							<div class="input-field center-align paddingTop30">
+								<button class="btn waves-effect waves-light red white-text"><i class="material-icons left">delete_forever</i>Yes, Delete</button>
+							</div>
+						</form>
+					</div>
+				</div>
+				@endforeach
+			</div>
+		</div>
+		<div class="col m4">
+			<div class="center-align">
+				<a class="btn waves-effect waves-light green white-text category" data-reveal="#addSubcategory"><i class="material-icons left">add</i>Add new subcategory</a>
+			</div>
+			<div class="hidden paddingTop20" id="addSubcategory">
+				<form action="{{route('createSubcategory')}}" method="POST" class="paddingTop10">
+					@csrf
+					<div class="row">
+						<div class="col m9">
+							<div class="input-field">
+								<select name="category_id">
+									@foreach($categories as $category)
+									<option value="{{$category->id}}">{{$category->category}}</option>
+									@endforeach
+								</select>
+								<label>Select a category</label>
+							</div>
+							<div class="input-field">
+								<input type="text" name="subcategory" required>
+								<label for="subcategory">Enter a new subcategory</label>
+							</div>
+						</div>
+						<div class="col m3">
+							<div class="input-field center-align paddingTop60">
+								<button class="btn waves-effect waves-light green white-text"><i class="material-icons">local_offer</i></button>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="collection marginTop30 hidden" id="subcat">
+				<div></div>
+				@foreach($subcategories as $subcategory)
+				<div class="modal" id="subcategoryModal{{$subcategory->id}}">
+					<div class="modal-content">
+						<h5 class="center">Are you sure you want to delete this subcategory?</h5>
+						<form action="{{route('deleteSubcategory', ['id' => $subcategory->id])}}" method="POST">
+							@csrf
+							@method('DELETE')
+							<div class="input-field center-align paddingTop30">
+								<button class="btn waves-effect waves-light red white-text"><i class="material-icons left">delete_forever</i>Yes, Delete</button>
+							</div>
+						</form>
+					</div>
+				</div>
+				@endforeach
+			</div>
+		</div>
+	</div>
+</div>
 @endsection
 
 @section('js')

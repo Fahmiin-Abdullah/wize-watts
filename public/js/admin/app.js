@@ -13,3 +13,6 @@ M.Tooltip.init(tooltip);
 
 const sidenav = document.querySelectorAll('.sidenav');
 M.Sidenav.init(sidenav);
+
+const select = document.querySelectorAll('select');
+M.FormSelect.init(select);

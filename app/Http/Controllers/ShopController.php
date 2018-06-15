@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Product;
 use App\Favorite;
+use App\Category;
+use App\Subcategory;
 use Auth;
 
 class ShopController extends Controller
@@ -16,6 +18,15 @@ class ShopController extends Controller
 
 		return view('users.shop')
 				->with('products', $products);
+	}
+
+	public function getCatalog($cat, $subcat)
+	{
+		$products = Product::where('category_id', $cat)
+							->where('subcategory_id', $subcat)
+							->get();
+
+		return view('users.shop')->with('products', $products);
 	}
 
 	public function createFav($id)

@@ -73,11 +73,11 @@
 							tooltipped hide-on-med-and-down favorite" data-position="top" data-tooltip="Add to favlist" data-favid="{{$product->id}}" id="fav{{$product->id}}"><i class="material-icons black-text">favorite</i></a>
 						</div>
 						<div class="card-action black paddingAll5Small">
-							<a href="#" class="white-text smallFont left hide-on-med-and-down">Add to cart</a>
+							<a href="#cartModal{{$product->id}}" class="white-text smallFont left hide-on-med-and-down modal-trigger">Add to cart</a>
 							<div class="row margin0">
 								<div class="col s6 center-align">
 									<a data-favid="{{$product->id}}" class="favorite
-									@auth	
+									@auth
 										@if(count($user->favorites))
 										@foreach($user->favorites as $favorite)
 											@if($favorite->product_id == $product->id)
@@ -90,7 +90,92 @@
 									"><i class="material-icons hide-on-large-only">favorite</i></a>
 								</div>
 								<div class="col s6 center-align">
-									<a href="#"><i class="material-icons white-text hide-on-large-only">add_shopping_cart</i></a>
+									<a href="#cartModal{{$product->id}}" class=" waves-effect waves-light modal-trigger"><i class="material-icons white-text hide-on-large-only">add_shopping_cart</i></a>
+								</div>
+							</div>
+						</div>
+
+						<div class="modal" id="cartModal{{$product->id}}">
+							<div class="modal-content hide-on-med-and-down">
+								<h5>Add this item to your cart</h5>
+								<hr>
+								<div class="row">
+									<div class="col m12">
+										<div class="card horizontal darkGrey white-text">
+											<div class="card-image">
+												<a href="{{route('viewProduct', ['id' => $product->id])}}" class="waves-effect waves-light"><img src="/uploads/products/{{$product->productimage}}"></a>
+											</div>
+											<div class="card-stacked">
+												<div class="card-content paddingAll5Small paddingAll10 paddingBottom0">
+													<p class="card-title">{{$product->name}}</p>
+													<hr>
+													<div class="row margin0">
+														<div class="col m6">
+															<h6 class="paddingBottom10">BND${{$product->pricing}}</h6>
+															<h6><strong>Availability: <span class="yellow-text">{{$product->stock}}</span></strong></h6>
+														</div>
+														<div class="col m6">
+															<form action="{{route('addToCart', ['id' => $product->id])}}" method="GET">
+																@csrf
+																<div class="input-field">
+																	<input type="number" min="0" name="qty" class="white-text quantity" data-max="{{$product->stock}}" data-id="#addButton{{$product->id}}" required>
+																	<label for="qty">Quantity</label>
+																</div>
+																<div class="input-field">
+																	<button class="btn waves-effect waves-light yellow black-text" id="addButton{{$product->id}}"><i class="material-icons left">shopping_cart</i>Add to cart</button>
+																</div>
+															</form>
+														</div>
+													</div>
+													<a data-favid="{{$product->id}}" class="favorite
+													@auth
+														@if(count($user->favorites))
+														@foreach($user->favorites as $favorite)
+															@if($favorite->product_id == $product->id)
+															yellow-text
+															@endif
+														@endforeach
+														@else
+														@endif
+													@endauth
+													"><i class="material-icons hide-on-large-only">favorite</i></a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="modal-content hide-on-large-only paddingAll10">
+								<h6>Add this item to cart</h6>
+								<hr>
+								<div class="card darkGrey white-text">
+									<div class="card-image">
+										<a href="{{route('viewProduct', ['id' => $product->id])}}" class="waves-effect waves-light"><img src="/uploads/products/{{$product->productimage}}" class="addCartSmall"></a>
+									</div>
+									<div class="card-content paddingAll10">
+										<div class="card-content paddingAll5Small paddingAll10 paddingBottom0">
+											<p class="card-title">{{$product->name}}</p>
+											<hr>
+											<div class="row margin0">
+												<div class="col m6">
+													<h6 class="paddingBottom10">BND${{$product->pricing}}</h6>
+													<h6><strong>Availability: <span class="yellow-text">{{$product->stock}}</span></strong></h6>
+												</div>
+												<div class="col m6">
+													<form action="{{route('addToCart', ['id' => $product->id])}}" method="GET">
+														@csrf
+														<div class="input-field">
+															<input type="number" min="0" name="qty" class="white-text quantity" data-max="{{$product->stock}}" data-id="#addButtonS{{$product->id}}" required>
+															<label for="qty">Quantity</label>
+														</div>
+														<div class="input-field">
+															<button class="btn waves-effect waves-light yellow black-text" id="addButtonS{{$product->id}}"><i class="material-icons left">shopping_cart</i>Add to cart</button>
+														</div>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -101,8 +186,4 @@
 		</div>
 	</div>
 </div>
-@endsection
-
-@section('js')
-	<script src="{{asset('js/users/shop.js')}}"></script>
 @endsection

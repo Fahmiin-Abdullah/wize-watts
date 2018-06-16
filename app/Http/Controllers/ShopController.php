@@ -8,7 +8,9 @@ use App\Product;
 use App\Favorite;
 use App\Category;
 use App\Subcategory;
+use App\Cart;
 use Auth;
+use Session;
 
 class ShopController extends Controller
 {

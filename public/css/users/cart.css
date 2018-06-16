@@ -1,0 +1,21 @@
+.goTo:hover {
+	background-color: #000 !important;
+	color: #fff !important;
+}
+
+.modalTable {
+	width: 1000px !important;
+}
+
+.action {
+	border: 1px solid #fff;
+}
+
+.action:hover {
+	background-color: #fff !important;
+	color: #000 !important;
+}
+
+.shop:hover {
+	color: #000 !important;
+}

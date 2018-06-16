@@ -3,8 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Gloudemans\Shoppingcart\Contracts\Buyable;
 
-class Product extends Model
+class Product extends Model implements Buyable
 {
 	public function reviews()
 	{
@@ -25,4 +26,19 @@ class Product extends Model
 	{
 		return $this->belongsTo('App\Subcategory');
 	}
+
+
+
+	// SHOPPING CART BUYABLES
+	public function getBuyableIdentifier($options = NULL){
+        return $this->id;
+    }
+
+    public function getBuyableDescription($options = NULL){
+        return $this->name;
+    }
+
+    public function getBuyablePrice($options = NULL){
+        return $this->pricing;
+    }
 }

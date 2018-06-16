@@ -55,4 +55,15 @@ $(document).ready(function() {
 			}
 		});
 	});
+
+	$('.quantity').on('change', function() {
+		const max = $(this).data('max');
+		const qty = $(this).val();
+		const id = $(this).data('id');
+		if (qty > max) {
+			$(id).addClass('disabled');
+		} else {
+			$(id).removeClass('disabled');
+		}
+	});
 });

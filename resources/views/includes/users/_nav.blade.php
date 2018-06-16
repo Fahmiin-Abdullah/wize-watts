@@ -5,7 +5,7 @@
 				<li><a href="/">Home</a></li>
 				<li><a href="/shop">Shop now!</a></li>
 				<li><a href="">About us</a></li>
-				<li><a href=""><i class="material-icons left">shopping_cart</i>My cart</a></li>
+				<li><a href="/cart"><i class="material-icons left shoppingCart">shopping_cart</i>My cart</a></li>
 				@auth
 				<li class="right"><a class="account" data-account="#logout">Logout</a></li>
 				<li class="right"><a href="/profile"><i class="material-icons left">person</i>Welcome, {{$user->name}}</a></li>
@@ -47,7 +47,7 @@
 					<a href="#" class="waves-effect waves-light"><i class="material-icons">group</i></a>
 				</div>
 				<div class="col s3 center-align">
-					<a href="#" class="waves-effect waves-light"><i class="material-icons">shopping_cart</i></a>
+					<a href="/cart" class="waves-effect waves-light"><i class="material-icons shoppingCart">shopping_cart</i></a>
 				</div>
 			</div>
 		</div>

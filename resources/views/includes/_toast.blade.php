@@ -99,3 +99,15 @@
         M.toast({html: 'Subcategory deleted successfully'})
     </script>
 @endif
+
+@if(!empty(Session::get('session_code')) && Session::get('session_code') == 'cartAdded')
+    <script>
+        M.toast({html: 'Item added to cart!'})
+    </script>
+@endif
+
+@if(!empty(Session::get('session_code')) && Session::get('session_code') == 'itemDeleted')
+    <script>
+        M.toast({html: 'Item removed from cart!'})
+    </script>
+@endif

@@ -34,6 +34,12 @@ Route::post('/products/review/{id}', 'ReviewController@writeReview')->name('writ
 Route::post('/products/review/edit/{id}', 'ReviewController@editReview')->name('editReview');
 Route::delete('/products/review/delete/{id}', 'ReviewController@deleteReview')->name('deleteReview');
 
+Route::get('/shop/addtocart/{id}', 'CartController@addToCart')->name('addToCart');
+Route::get('/cart', 'CartController@showCart')->name('showCart');
+Route::get('/cart/delete/{id}', 'CartController@deleteItem')->name('deleteItem');
+
+
+
 //PROFILE PAGE
 Route::get('/profile', 'ProfileController@showProfile')->name('profilePage');
 Route::post('/profile/edit/info/{id}', 'ProfileController@editInfo')->name('editInfo');

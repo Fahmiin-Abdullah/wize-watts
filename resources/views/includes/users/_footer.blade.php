@@ -7,7 +7,7 @@
 					<a href="/" class="waves-effect waves-light darkGrey white-text collection-item">Home</a>
 					<a href="/shop" class="waves-effect waves-light darkGrey white-text collection-item">Shop now!</a>
 					<a class="waves-effect waves-light darkGrey white-text collection-item">About us</a>
-					<a class="waves-effect waves-light darkGrey white-text collection-item">My cart</a>
+					<a href="/cart" class="waves-effect waves-light darkGrey white-text collection-item">My cart</a>
 				</div>
 			</div>
 			@foreach($categories as $category)
@@ -40,7 +40,7 @@
 				<a href="/" class="waves-effect waves-light darkGrey white-text collection-item">Home</a>
 				<a href="/shop" class="waves-effect waves-light darkGrey white-text collection-item">Shop now!</a>
 				<a class="waves-effect waves-light darkGrey white-text collection-item">About us</a>
-				<a class="waves-effect waves-light darkGrey white-text collection-item">My cart</a>
+				<a href="/cart" class="waves-effect waves-light darkGrey white-text collection-item">My cart</a>
 			</div>
 			
 			@foreach($categories as $category)

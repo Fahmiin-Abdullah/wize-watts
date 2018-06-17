@@ -11,8 +11,22 @@ class CartController extends Controller
 	public function showCart()
 	{
 		$cartItems = Cart::content();
+		$shippingTotal = 0;
 
-		return view('users.cart')->with('cartItems', $cartItems);
+		foreach ($cartItems as $item) {
+			$shippingTotal += $item->shipping;
+		}
+
+		if (Cart::subtotal() >= 50.00) {
+			$shippingTotal = 9.99;
+		}
+
+		$cartTotal = Cart::subtotal() + $shippingTotal;
+
+		return view('users.cart')
+				->with('cartItems', $cartItems)
+				->with('shippingTotal', $shippingTotal)
+				->with('cartTotal', $cartTotal);
 	}
 
 	public function addToCart(Request $request, $id)
@@ -23,10 +37,10 @@ class CartController extends Controller
 			'id' => $id,
 			'name' => $product->name,
 			'qty' => $qty,
-			'price' => $product->pricing
-		]);
-		$cartItem->associate('App\Product');
-
+			'price' => $product->pricing,
+			'shipping' => $product->shipping * $qty
+		])->associate('App\Product');
+		
 		return back()->with('session_code', 'cartAdded');
 	}
 

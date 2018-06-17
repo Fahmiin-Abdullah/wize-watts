@@ -11,6 +11,9 @@ M.Modal.init(modal);
 const tooltip= document.querySelectorAll('.tooltipped');
 M.Tooltip.init(tooltip);
 
+const tabs = document.querySelectorAll('.tabs');
+M.Tabs.init(tabs);
+
 
 //JQUERY
 $(document).ready(function() {

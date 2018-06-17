@@ -194,6 +194,10 @@ a:hover {
 		padding: 20px !important;
 	}
 
+	.paddingTop10Small {
+		padding-top: 10px !important;
+	}
+
 	.paddingTop30Small {
 		padding-top: 30px !important;
 	}
@@ -204,6 +208,10 @@ a:hover {
 
 	.paddingTop70Small {
 		padding-top: 70px !important;
+	}
+
+	.paddingLeft10Small {
+		padding-left: 10px !important;
 	}
 
 	.paddingLeft20Small {

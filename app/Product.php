@@ -27,6 +27,11 @@ class Product extends Model implements Buyable
 		return $this->belongsTo('App\Subcategory');
 	}
 
+	public function orders()
+	{
+		return $this->belongsToMany('App\Order');
+	}
+
 
 
 	// SHOPPING CART BUYABLES
@@ -40,5 +45,9 @@ class Product extends Model implements Buyable
 
     public function getBuyablePrice($options = NULL){
         return $this->pricing;
+    }
+
+    public function getBuyableShipping($options = NULL){
+    	return $this->shipping;
     }
 }

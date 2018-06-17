@@ -182,20 +182,13 @@
 <div class="modal" id="logoutModal">
 	<div class="modal-content">
 		<h5 class="center">Are you sure? We're sad to see you go</h5>
-		<div class="row">
-			<div class="col s6 center-align">
+		<div class="center-align paddingTop20">
+			<form action="{{route('logout')}}" method="POST">
+				@csrf
 				<div class="input-field">
-					<a href="#" class="btn waves-effect waves-light yellow black-text">Cancel</a>
+					<button class="btn waves-effect waves-light yellow black-text">Yes, bye!</button>
 				</div>
-			</div>
-			<div class="col s6 center-align">
-				<form action="{{route('logout')}}" method="POST">
-					@csrf
-					<div class="input-field">
-						<button class="btn waves-effect waves-light yellow black-text">Yes, bye!</button>
-					</div>
-				</form>
-			</div>
+			</form>
 		</div>
 	</div>
 </div>

@@ -256,11 +256,11 @@
 										<p class="card-title">{{$item->name}}</p>
 										<hr>
 										<div class="row margin0">
-											<div class="col m6">
+											<div class="col s12 m6">
 												<h6 class="paddingBottom10">BND${{$item->pricing}}</h6>
 												<h6><strong>Availability: <span class="yellow-text">{{$item->stock}}</span></strong></h6>
 											</div>
-											<div class="col m6">
+											<div class="col s12 m6">
 												<form action="{{route('addToCart', ['id' => $product->id])}}" method="GET">
 													@csrf
 													<div class="input-field">

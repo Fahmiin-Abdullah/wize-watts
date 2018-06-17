@@ -33,4 +33,8 @@ button:hover {
 	.relatedSmall {
 		height: 200px;
 	}
+
+	.card-title {
+		font-size: 18px !important;
+	}
 }

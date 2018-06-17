@@ -37,6 +37,7 @@ Route::delete('/products/review/delete/{id}', 'ReviewController@deleteReview')->
 Route::get('/shop/addtocart/{id}', 'CartController@addToCart')->name('addToCart');
 Route::get('/cart', 'CartController@showCart')->name('showCart');
 Route::get('/cart/delete/{id}', 'CartController@deleteItem')->name('deleteItem');
+Route::post('/cart/checkout', 'OrderController@createOrder')->name('createOrder');
 
 
 

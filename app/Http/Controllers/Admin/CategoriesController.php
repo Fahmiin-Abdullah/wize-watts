@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Subcategory;
+use App\Tag;
 
 class CategoriesController extends Controller
 {
@@ -64,5 +65,27 @@ class CategoriesController extends Controller
         $subcategory->delete();
 
         return back()->with('session_code', 'subcategoryDelete');
+    }
+
+    public function createTag(Request $request)
+    {
+        $request->validate([
+            'tag' => 'required'
+        ]);
+
+        $tag = new Tag;
+        $tag->tag = $request->input('tag');
+        $tag->save();
+
+        return back()->with('session_code', 'tagCreated');
+    }
+
+    public function deleteTag($id)
+    {
+        $tag = Tag::find($id);
+        $tag->products()->detach();
+        $tag->delete();
+
+        return back()->with('session_code', 'tagDeleted');
     }
 }

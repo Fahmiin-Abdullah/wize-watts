@@ -16,7 +16,6 @@ class AddCategoriesToProduct extends Migration
         Schema::table('products', function($table) {
             $table->integer('category_id')->after('shipping')->nullable();
             $table->integer('subcategory_id')->after('category_id')->nullable();
-            $table->string('tag')->after('subcategory_id')->nullable();
         });
     }
 
@@ -30,7 +29,6 @@ class AddCategoriesToProduct extends Migration
         Schema::table('products', function($table) {
             $table->dropColumn('category_id');
             $table->dropColumn('subcategory_id');
-            $table->dropColumn('tag');
         });
     }
 }

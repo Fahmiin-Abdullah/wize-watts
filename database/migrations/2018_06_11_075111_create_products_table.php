@@ -19,7 +19,6 @@ class CreateProductsTable extends Migration
             $table->text('description');
             $table->string('productimage')->default('default_product.jpg');
             $table->string('stock');
-            $table->string('tags')->nullable();
             $table->string('pricing');
             $table->string('shipping')->nullable();
             $table->text('details')->nullable();

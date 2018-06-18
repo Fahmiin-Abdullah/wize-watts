@@ -10,6 +10,7 @@ use App\Order;
 use App\MailingList;
 use App\Category;
 use App\Subcategory;
+use App\Tag;
 
 class AdminController extends Controller
 {
@@ -18,11 +19,13 @@ class AdminController extends Controller
 		$products = Product::paginate(15);
 		$categories = Category::all();
 		$subcategories = Subcategory::all();
+		$tags = Tag::all();
 
 		return view('admin.products')
 					->with('products', $products)
 					->with('categories', $categories)
-					->with('subcategories', $subcategories);
+					->with('subcategories', $subcategories)
+					->with('tags', $tags);
 	}
 
 	public function showCustomers()

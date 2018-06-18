@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('css')
-	<link rel="stylesheet" type="text/css" href={{asset('css/admin/products.css')}}>
+	<link rel="stylesheet" type="text/css" href="{{asset('css/admin/products.css')}}">
 @endsection
 
 @section('content')
@@ -65,8 +65,12 @@
 						</div>
 					</div>
 					<div class="input-field">
-						<input type="text" name="tag">
-						<label for="tag">Tag this item</label>
+						<select name="tags[]" multiple="multiple">
+							@foreach($tags as $tag)
+							<option value="{{$tag->id}}">{{$tag->tag}}</option>
+							@endforeach
+						</select>
+						<label for="tgas[]">Enter tags for this product</label>
 					</div>
 				</div>
 				<div class="col m6 center-align">
@@ -137,8 +141,12 @@
 						</div>
 					</div>
 					<div class="input-field">
-						<input type="text" name="tag">
-						<label for="tag">Tag this item</label>
+						<select name="tags[]" multiple="multiple">
+							@foreach($tags as $tag)
+							<option value="{{$tag->id}}">{{$tag->tag}}</option>
+							@endforeach
+						</select>
+						<label for="tgas[]">Enter tags for this product</label>
 					</div>
 				</div>
 				<div class="col m6 center-align">
@@ -181,7 +189,15 @@
 				<td><a href="{{route('viewProduct', ['id' => $product->id])}}">{{$product->name}}</a></td>
 				<td class="center">{{$product->stock}}</td>
 				<td class="center">{{$product->pricing}}</td>
-				<td class="center"><em>{{($product->tags) ? $product->tags : 'NULL'}}</em></td>
+				<td class="center">
+					@if($product->tags)
+						@foreach($product->tags as $item)
+						<span class="chip">{{$item->tag}}</span>
+						@endforeach
+					@else
+					NULL
+					@endif
+				</td>
 				<td class="center"></td>
 				<td class="center">
 					<div class="row paddingTop10 paddingBottom10 margin0">
@@ -299,6 +315,54 @@
 					<div class="modal-content">
 						<h5 class="center">Are you sure you want to delete this subcategory?</h5>
 						<form action="{{route('deleteSubcategory', ['id' => $subcategory->id])}}" method="POST">
+							@csrf
+							@method('DELETE')
+							<div class="input-field center-align paddingTop30">
+								<button class="btn waves-effect waves-light red white-text"><i class="material-icons left">delete_forever</i>Yes, Delete</button>
+							</div>
+						</form>
+					</div>
+				</div>
+				@endforeach
+			</div>
+		</div>
+		<div class="col m4">
+			<div class="center-align">
+				<a class="btn waves-effect waves-light green white-text category" data-reveal="#addTag"><i class="material-icons left">add</i>Add new tag</a>
+			</div>
+			<div class="hidden paddingTop20" id="addTag">
+				<form action="{{route('createTag')}}" method="POST">
+					@csrf
+					<div class="row">
+						<div class="col m9">
+							<div class="input-field">
+								<input type="text" name="tag" required>
+								<label for="tag">Enter a new tag</label>
+							</div>
+						</div>
+						<div class="col m3">
+							<div class="input-field center-align">
+								<button class="btn waves-effect waves-light green white-text"><i class="material-icons">local_offer</i></button>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="collection marginTop30">
+				@foreach($tags as $tag)
+				<div class="row margin0">
+					<div class="col m10 padding0">
+						<a class="collection-item" data-id="{{$tag->id}}">{{$tag->tag}}<span class="right new badge" data-badge-caption="">{{count($tag->products)}}</span></a>
+					</div>
+					<div class="col m2 padding0 center-align white paddingTop13">
+						<a href="#tagModal{{$tag->id}}" class="close red-text center-align modal-trigger"><i class="material-icons center">close</i></a>
+					</div>
+				</div>
+
+				<div class="modal" id="tagModal{{$tag->id}}">
+					<div class="modal-content">
+						<h5 class="center">Are you sure you want to delete this tag?</h5>
+						<form action="{{route('deleteTag', ['id' => $tag->id])}}" method="POST">
 							@csrf
 							@method('DELETE')
 							<div class="input-field center-align paddingTop30">

@@ -22,3 +22,11 @@ td {
 .close {
 	cursor: spointer;
 }
+
+.category {
+	width: 300px;
+}
+
+.tagSelect {
+	width: 378px !important;
+}

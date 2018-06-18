@@ -55,9 +55,12 @@
 						<div class="card-image">
 							<a href="/products/view/{{$product->id}}" class="waves-effect waves-light"><img src="/uploads/products/{{$product->productimage}}"></a>
 						</div>
-						<div class="card-content center-align padding0">
+						<div class="card-content padding0 paddingLeft20 paddingBottom10">
 							<h5 class="smallFont"><strong>{{$product->name}}</strong></h5>
 							<h6 class="paddingBottom10">BND${{$product->pricing}}</h6>
+							@foreach($product->tags as $tag)
+							<span class="chip hide-on-med-and-down">{{$tag->tag}}</span>
+							@endforeach
 							<a class="btn-floating halfway-fab waves-effect waves-light yellow
 							@auth
 								@if(count($user->favorites))

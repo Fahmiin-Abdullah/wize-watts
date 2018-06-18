@@ -22,6 +22,12 @@
 				</div>
 			</div>
 			@endforeach
+			<div class="col m3">
+				<h5 class="center yellow-text paddingBottom10">Popular tags</h5>
+				@foreach($tags as $tag)
+				<span class="chip">{{$tag->tag}}</span>
+				@endforeach
+			</div>
 		</div>
 	</div>
 	<div class="hide-on-large-only">
@@ -35,12 +41,20 @@
 					<a class="waves-effect waves-light yellow-text footerWidget" data-reveal="#footer{{$category->id}}">{{$category->category}}</a>
 				</div>
 				@endforeach
+				<div class="col s2 center">
+					<a class="waves-effect waves-light yellow-text footerWidget" data-reveal="#tags">Popular tags</a>
+				</div>
 			</div>
 			<div class="collection darkGrey linkReveal" id="quickLink">
 				<a href="/" class="waves-effect waves-light darkGrey white-text collection-item">Home</a>
 				<a href="/shop" class="waves-effect waves-light darkGrey white-text collection-item">Shop now!</a>
 				<a class="waves-effect waves-light darkGrey white-text collection-item">About us</a>
 				<a href="/cart" class="waves-effect waves-light darkGrey white-text collection-item">My cart</a>
+			</div>
+			<div class="linkReveal hidden" id="tags">
+				@foreach($tags as $tag)
+				<span class="chip">{{$tag->tag}}</span>
+				@endforeach
 			</div>
 			
 			@foreach($categories as $category)

@@ -104,9 +104,12 @@
 						<div class="card-image">
 							<a href="{{route('viewProduct', ['id' => $fav->product->id])}}" class="waves-effect waves-light"><img src="/uploads/products/{{$fav->product->productimage}}"></a>
 						</div>
-						<div class="card-content center-align padding0">
+						<div class="card-content padding0 paddingBottom10 paddingLeft20">
 							<h5 class="smallFont black-text"><strong>{{$fav->product->name}}</strong></h5>
 							<h6 class="paddingBottom10 black-text">BND${{$fav->product->pricing}}</h6>
+							@foreach($fav->product->tags as $tag)
+							<span class="chip">{{$tag->tag}}</span>
+							@endforeach
 							<a class="btn-floating halfway-fab waves-effect waves-light tooltipped favorite" data-position="top" data-tooltip="Add to favlist" data-favid="{{$fav->product->id}}" id="fav{{$fav->product->id}}" data-id="#{{$fav->product->id}}"><i class="material-icons black-text">favorite</i></a>
 						</div>
 					</div>
@@ -195,9 +198,12 @@
 					<div class="card-image">
 						<a href="{{route('viewProduct', ['id' => $fav->product->id])}}" class="waves-effect waves-light"><img src="/uploads/products/{{$fav->product->productimage}}"></a>
 					</div>
-					<div class="card-content center-align padding0">
+					<div class="card-content padding0 paddingBottom10 paddingLeft20">
 						<h5 class="smallFont black-text"><strong>{{$fav->product->name}}</strong></h5>
 						<h6 class="paddingBottom10 black-text">BND${{$fav->product->pricing}}</h6>
+						@foreach($fav->product->tags as $tag)
+						<span class="chip">{{$tag->tag}}</span>
+						@endforeach
 						<a class="btn-floating halfway-fab waves-effect waves-light tooltipped favorite" data-position="top" data-tooltip="Add to favlist" data-favid="{{$fav->product->id}}" id="fav{{$fav->product->id}}" data-id="#{{$fav->product->id}}"><i class="material-icons black-text">favorite</i></a>
 					</div>
 				</div>

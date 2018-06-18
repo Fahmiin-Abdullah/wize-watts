@@ -88,6 +88,12 @@
     </script>
 @endif
 
+@if(!empty(Session::get('session_code')) && Session::get('session_code') == 'tagCreated')
+    <script>
+        M.toast({html: 'Tag added successfully'})
+    </script>
+@endif
+
 @if(!empty(Session::get('session_code')) && Session::get('session_code') == 'categoryDelete')
     <script>
         M.toast({html: 'Category deleted successfully'})
@@ -97,6 +103,12 @@
 @if(!empty(Session::get('session_code')) && Session::get('session_code') == 'subcategoryDelete')
     <script>
         M.toast({html: 'Subcategory deleted successfully'})
+    </script>
+@endif
+
+@if(!empty(Session::get('session_code')) && Session::get('session_code') == 'tagDeleted')
+    <script>
+        M.toast({html: 'Tag deleted successfully'})
     </script>
 @endif
 

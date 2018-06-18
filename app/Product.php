@@ -32,6 +32,11 @@ class Product extends Model implements Buyable
 		return $this->belongsToMany('App\Order');
 	}
 
+	public function tags()
+	{
+		return $this->belongsToMany('App\Tag');
+	}
+
 
 
 	// SHOPPING CART BUYABLES

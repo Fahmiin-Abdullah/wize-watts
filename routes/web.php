@@ -75,6 +75,8 @@ Route::delete('/admin/category/delete/{id}', 'Admin\CategoriesController@deleteC
 Route::post('/admin/subcategory', 'Admin\CategoriesController@createSubcategory')->name('createSubcategory');
 Route::get('/admin/subcategory/{id}', 'Admin\CategoriesController@getSubcategory')->name('getSubcategory');
 Route::delete('/admin/subcategory/delete/{id}', 'Admin\CategoriesController@deleteSubcategory')->name('deleteSubcategory');
+Route::post('/admin/tag', 'Admin\CategoriesController@createTag')->name('createTag');
+Route::delete('/admin/tag/delete/{id}', 'Admin\CategoriesController@deleteTag')->name('deleteTag');
 
 Route::get('/admin/orders', 'Admin\AdminController@showOrders')->name('showOrders');
 Route::post('/admin/status/{id}', 'OrderController@statusUpdate')->name('statusUpdate');

@@ -40,8 +40,12 @@ class ProductController extends Controller
         $product->category_id = $request->input('category_id');
         $product->subcategory_id = $request->input('subcategory_id');
         $product->details = $request->input('details');
-
         $product->save();
+
+        $tags = $request->input('tags');
+        if ($tags) {
+            $product->tags()->attach($tags);
+        }    
 
         return back()->with('session_code', 'newProduct');
     }
@@ -101,8 +105,10 @@ class ProductController extends Controller
         $product->category_id = $request->input('category_id');
         $product->subcategory_id = $request->input('subcategory_id');
 	    $product->details = $request->input('details');
-
         $product->save();
+
+        $tags = $request->input('tags');
+        $product->tags()->attach($tags);
 
         return back()->with('session_code', 'editProduct');
     }
@@ -110,6 +116,7 @@ class ProductController extends Controller
     public function deleteProduct($id)
     {
     	$product = Product::find($id);
+        $product->tags()->detach();
     	$product->delete();
 
     	return back()->with('session_code', 'deleteProduct');

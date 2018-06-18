@@ -9,6 +9,7 @@ use App\Favorite;
 use App\Category;
 use App\Subcategory;
 use App\Cart;
+use App\Tag;
 use Auth;
 use Session;
 
@@ -17,9 +18,11 @@ class ShopController extends Controller
 	public function showPage()
 	{
 		$products = Product::paginate(15);
+		$tags = Tag::all();
 
 		return view('users.shop')
-				->with('products', $products);
+				->with('products', $products)
+				->with('tags', $tags);
 	}
 
 	public function getCatalog($cat, $subcat)

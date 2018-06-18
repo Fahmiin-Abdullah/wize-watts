@@ -174,10 +174,13 @@
 							<a href="{{route('viewProduct', ['id' => $item->id])}}" class="waves-effect waves-light"><img src="/uploads/products/{{$item->productimage}}" class="relatedSmall"></a>
 						</div>
 						<div class="card-stacked">
-							<div class="card-content center-align paddingAll5Small">
+							<div class="card-content center-align paddingAll5Small paddingAll10">
 								<p class="card-title">{{$item->name}}</p>
 								<h6 class="paddingBottom10">BND${{$item->pricing}}</h6>
-								<h6><strong>Availability: <span class="yellow-text">{{$item->stock}}</span></strong></h6>
+								<h6 class="paddingBottom10"><strong>Availability: <span class="yellow-text">{{$item->stock}}</span></strong></h6>
+								@foreach($item->tags as $tag)
+								<span class="chip hide-on-med-and-down">{{$tag->tag}}</span>
+								@endforeach
 								<a class="btn-floating halfway-fab waves-effect waves-light yellow tooltipped hide-on-med-and-down" data-position="top" data-tooltip="Add to favlist"><i class="material-icons black-text">favorite</i></a>
 							</div>
 							<div class="card-action black paddingAll5Small">

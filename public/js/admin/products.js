@@ -107,7 +107,9 @@ $(document).ready(function() {
 							<a class="collection-item" data-id="${subcategory.id}">${subcategory.subcategory}</a>
 						</div>
 						<div class="col m2 padding0 center-align white paddingTop13">
-							<a href="#subcategoryModal${subcategory.id}" class="close red-text center-align modal-trigger"><i class="material-icons center">close</i></a>
+							<a href="#subcategoryModal${subcategory.id}" class="close red-text 
+							center-align modal-trigger">
+							<i class="material-icons center">close</i></a>
 						</div>
 					</div>
 				`;

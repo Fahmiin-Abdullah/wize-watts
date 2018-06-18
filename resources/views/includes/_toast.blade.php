@@ -111,3 +111,9 @@
         M.toast({html: 'Item removed from cart!'})
     </script>
 @endif
+
+@if(!empty(Session::get('session_code')) && Session::get('session_code') == 'statusUpdated')
+    <script>
+        M.toast({html: 'Order status updated!'})
+    </script>
+@endif

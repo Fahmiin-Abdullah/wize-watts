@@ -54,14 +54,17 @@ Route::post('/favorite/{id}', 'ShopController@createFav')->name('createFav');
 
 //ADMIN
 Route::view('/admin/dashboard', 'admin.dashboard');
+
 Route::get('/admin/products', 'Admin\AdminController@showProducts')->name('adminProducts');
 Route::get('/admin/products/suboptions/{id}', 'Admin\ProductController@getSuboptions')->name('getSuboptions');
 Route::post('/admin/products/new', 'Admin\ProductController@createProduct')->name('createProduct');
 Route::get('/admin/products/getEdit/{id}', 'Admin\ProductController@getEdit')->name('getEditProduct');
 Route::post('/admin/products/edit/{id}', 'Admin\ProductController@editProduct')->name('editProduct');
 Route::delete('/admin/products/delete/{id}', 'Admin\ProductController@deleteProduct')->name('deleteProduct');
+
 Route::get('/admin/customers', 'Admin\AdminController@showCustomers')->name('adminCustomers');
 Route::get('/admin/customer/{id}', 'Admin\AdminController@getCustomer')->name('getCustomer');
+
 Route::post('/admin/mailinglist', 'Admin\AdminController@addMailingList')->name('addMailingList');
 Route::post('/admin/mailinglist/{id}', 'Admin\AdminController@addMailingList')->name('addMailingListReg');
 Route::get('/admin/mailinglist', 'Admin\AdminController@showMailList')->name('showMailList');
@@ -72,3 +75,6 @@ Route::delete('/admin/category/delete/{id}', 'Admin\CategoriesController@deleteC
 Route::post('/admin/subcategory', 'Admin\CategoriesController@createSubcategory')->name('createSubcategory');
 Route::get('/admin/subcategory/{id}', 'Admin\CategoriesController@getSubcategory')->name('getSubcategory');
 Route::delete('/admin/subcategory/delete/{id}', 'Admin\CategoriesController@deleteSubcategory')->name('deleteSubcategory');
+
+Route::get('/admin/orders', 'Admin\AdminController@showOrders')->name('showOrders');
+Route::post('/admin/status/{id}', 'OrderController@statusUpdate')->name('statusUpdate');

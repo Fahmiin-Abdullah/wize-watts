@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon;
 
 class Order extends Model
 {
@@ -17,6 +18,6 @@ class Order extends Model
 
     public function products()
     {
-    	return $this->belongsToMany('App\Product');
+    	return $this->belongsToMany('App\Product')->withPivot('qty', 'total');;
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
 use App\Product;
+use App\Order;
 use App\MailingList;
 use App\Category;
 use App\Subcategory;
@@ -27,9 +28,19 @@ class AdminController extends Controller
 	public function showCustomers()
 	{
 		$customers = User::paginate(20);
+		$orders = Order::all();
 
 		return view('admin.customers')
-					->with('customers', $customers);
+					->with('customers', $customers)
+					->with('orders', $orders);
+	}
+
+	public function showOrders()
+	{
+		$orders = Order::orderByRaw("FIELD(status, 'Pending...', 'Processing...', 'Delivering...', 'Closed!', 'Error!')ASC")->paginate(20);
+
+		return view('admin.orders')
+					->with('orders', $orders);
 	}
 
 	public function showMailList()
@@ -43,8 +54,9 @@ class AdminController extends Controller
 	public function getCustomer($id)
 	{
 		$customer = User::find($id);
+		$orders = Order::where('user_id', $customer->id)->orderByRaw("FIELD(status, 'Pending...', 'Processing...', 'Delivering...', 'Closed!', 'Error!')ASC")->get();
 
-		return response(json_encode($customer));
+		return response(json_encode($orders));
 	}
 
 	public function addMailingList(Request $request, $id = null)

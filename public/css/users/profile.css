@@ -9,9 +9,22 @@
 	box-shadow: 0 0 30px 5px yellow;
 }
 
+.card-panel {
+	padding: 10px !important;
+}
+
 .productCard img {
 	width: 337.22px !important;
 	height: 250px;
+}
+
+.orderHistory {
+	border: none;
+}
+
+.orderHistoryBody {
+	background-color: #000 !important;
+	color: #fff !important;
 }
 
 
@@ -21,12 +34,21 @@
 		cursor: pointer;
 	}
 
+	.productCard {
+		padding-bottom: 20px !important;
+	}
+
 	.productCard img {
-		width: 211px !important;
+		width: 239px !important;
 		height: 200px;
 	}
 
 	.smallFont {
 		font-size: 12px !important;
+	}
+
+	.orderHistoryBody {
+		padding: 5px !important;
+		padding-bottom: 20px !important;
 	}
 }

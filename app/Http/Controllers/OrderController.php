@@ -54,4 +54,13 @@ class OrderController extends Controller
 
     	return view('users.thankyou');
     }
+
+    public function statusUpdate(Request $request, $id)
+    {
+        $order = Order::find($id);
+        $order->status = $request->input('status');
+        $order->save();
+
+        return back()->with('session_code', 'statusUpdated');
+    }
 }

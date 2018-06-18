@@ -16,3 +16,6 @@ M.Sidenav.init(sidenav);
 
 const select = document.querySelectorAll('select');
 M.FormSelect.init(select);
+
+const materialboxed = document.querySelectorAll('.materialboxed');
+M.Materialbox.init(materialboxed);

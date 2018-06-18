@@ -24,7 +24,7 @@
 				<td>{{(($subscriber->user_id) ? 'Registered' : 'Unregistered')}}</td>
 				<td>{{(($subscriber->user_id) ? $subscriber->user->name : 'NULL')}}</td>
 				<td>{{$subscriber->mailList}}</td>
-				<td class="center">0</td>
+				<td class="center">{{(($subscriber->user_id) ? $subscriber->user->orders->count() : 0)}}</td>
 				<td class="center">
 					<div class="center-align">
 						<a href="#deleteModal{{$subscriber->id}}" class="btn waves-effect waves-light red white-text modal-trigger"><i class="material-icons left">delete_forever</i>Delete</a>

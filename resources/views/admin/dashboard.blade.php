@@ -5,5 +5,7 @@
 @endsection
 
 @section('content')
-<h2>Testing dashboard</h2>
+<div class="container80">
+	<h4 class="center">Hello admin</h4>
+</div>
 @endsection

@@ -9,6 +9,9 @@
 				@auth
 				<li class="right"><a class="account" data-account="#logout">Logout</a></li>
 				<li class="right"><a href="/profile"><i class="material-icons left">person</i>Welcome, {{$user->name}}</a></li>
+				@if($user->role->role == 'admin')
+					<li class="right"><a href="/admin/dashboard"><i class="material-icons left yellow-text">accessibility</i></a></li>
+				@endif
 				@else
 				<li class="right"><a class="account" data-account="#login">Login</a></li>
 				<li class="right"><a class="account" data-account="#signup">Signup</a></li>

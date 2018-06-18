@@ -91,15 +91,18 @@
 		
 		<tbody>
 			@foreach($customers as $customer)
-			<tr>
-				<td><i class="material-icons left view" data-id="{{$customer->id}}">remove_red_eye</i>{{$customer->name}}</td>
-				<td>{{$customer->firstname}}</td>
-				<td>{{$customer->lastname}}</td>
-				<td>{{$customer->email}}</td>
-				<td>{{$customer->address}}</td>
-				<td>{{$customer->phone}}</td>
-				<td class="center">{{$customer->orders->count()}}</td>
-			</tr>
+				@if($customer->id == 3)
+				@else
+				<tr>
+					<td><i class="material-icons left view" data-id="{{$customer->id}}">remove_red_eye</i>{{$customer->name}}</td>
+					<td>{{$customer->firstname}}</td>
+					<td>{{$customer->lastname}}</td>
+					<td>{{$customer->email}}</td>
+					<td>{{$customer->address}}</td>
+					<td>{{$customer->phone}}</td>
+					<td class="center">{{$customer->orders->count()}}</td>
+				</tr>
+				@endif
 			@endforeach
 		</tbody>
 	</table>

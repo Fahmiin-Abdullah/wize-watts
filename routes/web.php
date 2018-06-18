@@ -19,6 +19,7 @@ Route::get('/search', 'ShopController@search')->name('search');
 Route::post('/signup', 'Auth\RegisterController@register')->name('signup');
 Route::post('/login', 'Auth\LoginController@login')->name('login');
 Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+Route::view('/admin/dashboard', 'admin.dashboard');
 
 //PASSWORD RESET
 Route::get('/password/reset/', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');

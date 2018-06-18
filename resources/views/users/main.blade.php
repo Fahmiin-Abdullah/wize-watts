@@ -10,17 +10,13 @@
 	<h5 class="white-text section">A Virtual Electronics Supply Hub</h5>
 	<h2 class="center paddingTop10 margin0 white-text section"><strong>One stop shop for all your electronics need</strong></h2>
 	<div class="container hide-on-med-and-down">
-		<div class="row paddingTop80 section center-align">
-			<form action="" method="GET">
+		<div class="row paddingTop80 section">
+			<form action="{{route('search')}}" method="GET">
 				@csrf
-				<div class="col m10">
+				<div class="col m6 offset-m3">
 					<div class="input-field">
-						<input type="search" name="quickSearch" placeholder="Search for a component" required>
-					</div>
-				</div>
-				<div class="col m2">
-					<div class="input-field paddingTop10">
-						<button class="btn waves-effect waves-light yellow black-text"><i class="material-icons left">search</i>Search</button>
+						<input type="search" name="quickSearch" placeholder="Search for a component" class="search" required>
+						<span><div class="searchResults collection hidden searchDropdown"></div></span>
 					</div>
 				</div>
 			</form>
@@ -66,7 +62,7 @@
 				<div class="card-reveal">
 					<span class="card-title grey-text text-darken-4">For Arduino Enthusiasts<i class="material-icons right">close</i></span>
 					<p>From modules, to shields, to accessories that you never thought you needed, we got them. Visit our Arduino Things section to find out more.</p>
-					<a href="" class="btn waves-effect waves-light yellow black-text">That's for me!</a>
+					<a href="/shop/catalog/3" class="btn waves-effect waves-light yellow black-text">That's for me!</a>
 				</div>
 			</div>
 		</div>
@@ -78,7 +74,7 @@
 				<div class="card-reveal">
 					<span class="card-title grey-text text-darken-4">For All Things Electrical<i class="material-icons right">close</i></span>
 					<p>We provide supplements for our electrical engineers out there. From tools, components and the plentiful of resistors, find them in this category.</p>
-					<a href="" class="btn waves-effect waves-light yellow black-text">Let's go!</a>
+					<a href="/shop/catalog/4" class="btn waves-effect waves-light yellow black-text">Let's go!</a>
 				</div>
 			</div>
 		</div>
@@ -90,7 +86,7 @@
 				<div class="card-reveal">
 					<span class="card-title grey-text text-darken-4">Explore the abundance<i class="material-icons right">close</i></span>
 					<p>Enjoy browsing through our catalog? You can find our best selling products and promotions in our discovery page.</p>
-					<a href="" class="btn waves-effect waves-light yellow black-text">Count me in!</a>
+					<a href="/shop" class="btn waves-effect waves-light yellow black-text">Count me in!</a>
 				</div>
 			</div>
 		</div>

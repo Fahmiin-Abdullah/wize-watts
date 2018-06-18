@@ -25,11 +25,40 @@ class ShopController extends Controller
 				->with('tags', $tags);
 	}
 
+	public function search(Request $request)
+	{
+		$search = $request->get('value');
+		$products = Product::where('name', 'LIKE', "%$search%")->limit(5)->get();
+		$output = '';
+
+		if (count($products) > 0) {
+			foreach ($products as $product) {
+				$output .= '
+					<a href="/products/view/'.$product->id.'" class="collection-item darkGrey white-text">
+						<p class="left-align">'.$product->name.'<span class="right">BND$'.$product->pricing.'</span></p>
+					</a>';
+			}
+		} else {
+			$output .= '
+				<a class="collection-item darkGrey white-text"><span>No products found! Try another search</span></a>
+			';
+		}
+
+		return response($output);
+	}
+
 	public function getCatalog($cat, $subcat)
 	{
 		$products = Product::where('category_id', $cat)
 							->where('subcategory_id', $subcat)
 							->get();
+
+		return view('users.shop')->with('products', $products);
+	}
+
+	public function getCategory($id)
+	{
+		$products = Product::where('category_id', $id)->get();
 
 		return view('users.shop')->with('products', $products);
 	}

@@ -13,6 +13,7 @@
 
 //MAIN PAGE
 Route::view('/', 'users.main');
+Route::get('/search', 'ShopController@search')->name('search');
 
 //AUTH
 Route::post('/signup', 'Auth\RegisterController@register')->name('signup');
@@ -29,6 +30,7 @@ Route::post('/password/reset', 'Auth\ResetPasswordController@reset');
 //SHOP PAGE
 Route::get('/shop', 'ShopController@showPage')->name('shopPage');
 Route::get('/shop/catalog/{cat}/{subcat}', 'ShopController@getCatalog')->name('getCatalog');
+Route::get('/shop/catalog/{id}', 'ShopController@getCategory')->name('getCategory');
 Route::get('/products/view/{id}', 'Admin\ProductController@viewProduct')->name('viewProduct');
 Route::post('/products/review/{id}', 'ReviewController@writeReview')->name('writeReview');
 Route::post('/products/review/edit/{id}', 'ReviewController@editReview')->name('editReview');

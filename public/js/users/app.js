@@ -22,7 +22,35 @@ $(document).ready(function() {
 	    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 	  }
 	});
-	
+
+	$('.search').on('keyup', function(e) {
+		const value = $(this).val();
+		if (value != "") {
+			$('.searchDropdown').removeClass('hidden');
+		}
+	});
+
+	$(document).on('click', function(e) {
+		if (!$(e.target).closest('.search').length) {
+			$('.searchDropdown').addClass('hidden');
+		}
+	});
+
+	$('.search').on('keyup', function(e) {
+		if (e.keycode === 13) {
+			e.preventDefault();
+		}
+		const value = $(this).val();
+		$.ajax({
+			type: 'GET',
+			url: '/search',
+			data: {value: value},
+			success: function(data) {
+				$('.searchResults').html(data);
+			}
+		});
+	});
+
 	$('.footerWidget').on('click', function(e) {
 		e.preventDefault();
 		const link = $(this).data('reveal');

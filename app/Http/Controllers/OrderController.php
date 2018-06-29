@@ -48,6 +48,10 @@ class OrderController extends Controller
     			'qty' => $cartItem->qty,
     			'total' => $cartItem->subtotal
     		]);
+
+            $product = Product::find($cartItem->id);
+            $product->stock = $product->stock - $cartItem->qty;
+            $product->save();
     	}
 
     	Cart::destroy();

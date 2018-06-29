@@ -4,7 +4,6 @@
 			<ul>
 				<li><a href="/">Home</a></li>
 				<li><a href="/shop">Shop now!</a></li>
-				<li><a href="">About us</a></li>
 				<li><a href="/cart"><i class="material-icons left shoppingCart">shopping_cart</i>My cart</a></li>
 				@auth
 				<li class="right"><a class="account" data-account="#logout">Logout</a></li>

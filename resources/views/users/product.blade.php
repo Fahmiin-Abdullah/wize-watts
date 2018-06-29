@@ -15,7 +15,7 @@
 			</div>
 		</div>
 		<div class="col s12 m7">
-			<h3>{{$product->name}}</h3>
+			<h5>{{$product->name}}</h5>
 			<hr>
 			<p>{{$product->description}}</p>
 			<br>

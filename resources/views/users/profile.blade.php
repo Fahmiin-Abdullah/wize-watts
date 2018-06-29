@@ -49,7 +49,7 @@
 				</div>
 				<div class="card-reveal center-align">
 					<span class="card-title grey-text text-darken-4">My favlist<i class="material-icons right">close</i></span>
-					<h5 class="paddingTop30 paddingBottom30">Add or edit your favlist here</h5>
+					<h5 class="paddingTop30 paddingBottom30">Edit your favlist here</h5>
 					<a class="btn btn-floating btn-large waves-effect waves-light black white-text" id="editFavlist"><i class="material-icons">add</i></a>
 				</div>
 			</div>

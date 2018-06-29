@@ -23,7 +23,7 @@
 						<label for="name">Product name</label>
 					</div>
 					<div class="input-field">
-						<textarea class="materialize-textarea" name="description"></textarea>
+						<textarea class="materialize-textarea" name="description">Coming soon...</textarea>
 						<label for="description">Product description</label>
 					</div>
 					<div class="row">
@@ -82,7 +82,7 @@
 				</div>
 				<div class="col m12">
 					<div class="input-field">
-						<textarea class="materialize-textarea" name="details"></textarea>
+						<textarea class="materialize-textarea" name="details">Coming soon...</textarea>
 						<label for="details">Add details to the product</label>
 					</div>
 				</div>
@@ -202,10 +202,10 @@
 				<td class="center">
 					<div class="row paddingTop10 paddingBottom10 margin0">
 						<div class="col s6 m6">
-							<a href="#deleteProduct{{$product->id}}" class="btn waves-effect waves-light red white-text right modal-trigger"><i class="material-icons left">delete_forever</i>Delete</a>
+							<a href="#deleteProduct{{$product->id}}" class="btn waves-effect waves-light red white-text right modal-trigger"><i class="material-icons center">delete_forever</i></a>
 						</div>
 						<div class="col s6 m6">
-							<a class="btn waves-effect waves-light blue white-text left getEdit" data-id="{{$product->id}}" id="editButton{{$product->id}}"><i class="material-icons left">edit</i>Edit</a>
+							<a class="btn waves-effect waves-light blue white-text left getEdit" data-id="{{$product->id}}" id="editButton{{$product->id}}"><i class="material-icons center">edit</i></a>
 						</div>
 					</div>
 				</td>

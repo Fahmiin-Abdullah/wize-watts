@@ -52,7 +52,7 @@
 							<a href="/products/view/{{$product->id}}" class="waves-effect waves-light"><img src="/uploads/products/{{$product->productimage}}"></a>
 						</div>
 						<div class="card-content padding0 paddingLeft20 paddingBottom10">
-							<h5 class="smallFont"><strong>{{$product->name}}</strong></h5>
+							<h6 class="smallFont"><strong>{{$product->name}}</strong></h6>
 							<h6 class="paddingBottom10">BND${{$product->pricing}}</h6>
 							@foreach($product->tags as $tag)
 							<span class="chip hide-on-med-and-down">{{$tag->tag}}</span>

@@ -21,6 +21,7 @@
 				<th class="center">Action</th>
 			</tr>
 		</thead>
+
 		<tbody>
 			@foreach($orders as $order)
 			<tr>

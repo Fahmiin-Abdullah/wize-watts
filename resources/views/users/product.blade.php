@@ -59,14 +59,16 @@
 	<div class="row">
 		<div class="col s12 padding0">
 			<ul class="tabs black">
+				<li class="tab col s4"><a href="#related">Related</a></li>
 				<li class="tab col s4"><a href="#details">Details</a></li>
 				<li class="tab col s4"><a href="#reviews">Reviews</a></li>
-				<li class="tab col s4"><a href="#related">Related</a></li>
 			</ul>
 		</div>
+
 		<div id="details" class="col s12 tabPanel">
 			<p>{{$product->details}}</p>
 		</div>
+
 		<div id="reviews" class="col s12 tabPanel">
 			<p>Comment about the product, service or anything on your mind</p>
 			<ul class="collection">
@@ -164,23 +166,22 @@
 			<h5 class="center">Please log in to post a review</h5>
 			@endauth
 		</div>
+
 		<div id="related" class="col s12 tabPanel">
-			<p>Find out similar products in the category</p>
+			<p>Find out similar products in this subcategory</p>
 			<div class="row">
-				@foreach($products as $item)
-				<div class="col s12 m6">
+				@foreach($products->shuffle() as $item)
+				@if($item->subcategory == $product->subcategory)
+				<div class="col s12 m6 marginTop20">
 					<div class="card horizontal darkGrey white-text">
 						<div class="card-image">
 							<a href="{{route('viewProduct', ['id' => $item->id])}}" class="waves-effect waves-light"><img src="/uploads/products/{{$item->productimage}}" class="relatedSmall"></a>
 						</div>
 						<div class="card-stacked">
 							<div class="card-content center-align paddingAll5Small paddingAll10">
-								<p class="card-title">{{$item->name}}</p>
+								<h6 class="paddingBottom20">{{$item->name}}</h6>
 								<h6 class="paddingBottom10">BND${{$item->pricing}}</h6>
-								<h6 class="paddingBottom10"><strong>Availability: <span class="yellow-text">{{$item->stock}}</span></strong></h6>
-								@foreach($item->tags as $tag)
-								<span class="chip hide-on-med-and-down">{{$tag->tag}}</span>
-								@endforeach
+								<h6><strong>Availability: <span class="yellow-text">{{$item->stock}}</span></strong></h6>
 								<a class="btn-floating halfway-fab waves-effect waves-light yellow tooltipped hide-on-med-and-down" data-position="top" data-tooltip="Add to favlist"><i class="material-icons black-text">favorite</i></a>
 							</div>
 							<div class="card-action black paddingAll5Small">
@@ -209,7 +210,7 @@
 										</div>
 										<div class="card-stacked">
 											<div class="card-content paddingAll5Small paddingAll10 paddingBottom0">
-												<p class="card-title">{{$item->name}}</p>
+												<h6>{{$item->name}}</h6>
 												<hr>
 												<div class="row margin0">
 													<div class="col m6">
@@ -281,8 +282,13 @@
 							</div>
 						</div>
 					</div>
-				</div>	
+				</div>
+				@endif
 				@endforeach
+			</div>
+
+			<div class="center-align marginTop30">
+				{{$products->links()}}
 			</div>
 		</div>
   	</div>

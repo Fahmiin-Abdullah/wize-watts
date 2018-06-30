@@ -34,8 +34,15 @@ class ShopController extends Controller
 		if (count($products) > 0) {
 			foreach ($products as $product) {
 				$output .= '
-					<a href="/products/view/'.$product->id.'" class="collection-item darkGrey white-text">
-						<p class="left-align">'.$product->name.'<span class="right">BND$'.$product->pricing.'</span></p>
+					<a href="/products/view/'.$product->id.'" class="collection-item darkGrey white-text paddingAll10">
+						<div class="row margin0">
+							<div class="col s8 m8 left-align">
+								<p>'.$product->name.'</p>
+							</div>
+							<div class="col s4 m4 right-align">
+								<p>'.$product->pricing.'</p>
+							</div>
+						</div>
 					</a>';
 			}
 		} else {
@@ -51,14 +58,14 @@ class ShopController extends Controller
 	{
 		$products = Product::where('category_id', $cat)
 							->where('subcategory_id', $subcat)
-							->get();
+							->paginate(15);
 
 		return view('users.shop')->with('products', $products);
 	}
 
 	public function getCategory($id)
 	{
-		$products = Product::where('category_id', $id)->get();
+		$products = Product::where('category_id', $id)->get()->paginate(15);
 
 		return view('users.shop')->with('products', $products);
 	}

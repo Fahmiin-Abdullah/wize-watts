@@ -44,9 +44,9 @@
 		</div>
 		<div class="col s12 m9">
 			<div class="row black-text">
-				@foreach($products->sortByDesc('id') as $product)
+				@foreach($products->shuffle() as $product)
 				<div class="col s6 m4 productCard">
-					<h6 class="white-text paddingBottom20 paddingLeft5">{{$product->category->category}} / {{$product->subcategory->subcategory}}</h6>
+					<h6 class="white-text paddingBottom20 paddingLeft5 paddingTop20">{{$product->category->category}} / {{$product->subcategory->subcategory}}</h6>
 					<div class="card margin0">
 						<div class="card-image">
 							<a href="/products/view/{{$product->id}}" class="waves-effect waves-light"><img src="/uploads/products/{{$product->productimage}}"></a>
@@ -182,6 +182,11 @@
 				</div>
 				@endforeach
 			</div>
+
+			<div class="center-align marginTop30">
+				{{$products->links()}}
+			</div>
+
 		</div>
 	</div>
 </div>

@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Pagination\Paginator;
 use App\User;
 use App\Category;
 use App\Subcategory;
@@ -21,6 +22,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+
         View::composer(['*'], function($view) {
             $user = Auth::user();
             $categories = Category::paginate(3);
@@ -31,6 +33,8 @@ class AppServiceProvider extends ServiceProvider
                     ->with('subcategories', $subcategories)
                     ->with('tags', $tags);
         });
+
+        Paginator::defaultView('pagination::materialize');
     }
 
     /**

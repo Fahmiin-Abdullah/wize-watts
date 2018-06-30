@@ -178,7 +178,6 @@
 				<th class="center">Availability</th>
 				<th class="center">Pricing</th>
 				<th class="center">Tags</th>
-				<th class="center">Orders</th>
 				<th class="center">Action</th>
 			</tr>
 		</thead>
@@ -187,7 +186,7 @@
 			@foreach($products as $product)
 			<tr>
 				<td><a href="{{route('viewProduct', ['id' => $product->id])}}">{{$product->name}}</a></td>
-				<td class="center">{{$product->stock}}</td>
+				<td class="center {{($product->stock <= 5 ? 'red pulse white-text' : '')}}">{{$product->stock}}</td>
 				<td class="center">{{$product->pricing}}</td>
 				<td class="center">
 					@if($product->tags)
@@ -198,7 +197,6 @@
 					NULL
 					@endif
 				</td>
-				<td class="center"></td>
 				<td class="center">
 					<div class="row paddingTop10 paddingBottom10 margin0">
 						<div class="col s6 m6">
@@ -226,6 +224,10 @@
 			@endforeach
 		</tbody>
 	</table>
+</div>
+
+<div class="center-align paddingTop15">
+	{{$products->links()}}
 </div>
 
 <div class="container90 paddingTop50 paddingBottom20">

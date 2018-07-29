@@ -64,6 +64,8 @@ Route::post('/admin/products/new', 'Admin\ProductController@createProduct')->nam
 Route::get('/admin/products/getEdit/{id}', 'Admin\ProductController@getEdit')->name('getEditProduct');
 Route::post('/admin/products/edit/{id}', 'Admin\ProductController@editProduct')->name('editProduct');
 Route::delete('/admin/products/delete/{id}', 'Admin\ProductController@deleteProduct')->name('deleteProduct');
+Route::get('/admin/products/{params}/{sort}', 'Admin\AdminController@sortProduct')->name('sortProduct');
+Route::post('/admin/products/search', 'Admin\AdminController@searchProduct')->name('searchProduct');
 
 Route::get('/admin/customers', 'Admin\AdminController@showCustomers')->name('adminCustomers');
 Route::get('/admin/customer/{id}', 'Admin\AdminController@getCustomer')->name('getCustomer');

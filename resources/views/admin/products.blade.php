@@ -171,13 +171,49 @@
 </div>
 
 <div class="container90">
-	<table class="highlight responsive-table">
+	<form action="{{route('searchProduct')}}" method="POST">
+		@csrf
+		<div class="row margin0">
+			<div class="col s8 m3">
+				<div class="input-field">
+					<input type="text" name="searchProduct" placeholder="Search for a product" required>
+				</div>
+			</div>
+			<div class="col s4 m3 paddingTop20">
+				<button class="btn waves-effect waves-light green white-text"><i class="material-icons center">search</i></button>
+			</div>
+		</div>
+	</form>
+	
+</div>
+
+<div class="container90">
+	<table class="highlight responsive-table table">
 		<thead>
 			<tr>
 				<th>Name</th>
-				<th class="center">Availability</th>
-				<th class="center">Pricing</th>
-				<th class="center">Tags</th>
+				<th class="center"><a class="dropdown-trigger" data-target="dropdownStock">Availability</a></th>
+				<ul id="dropdownStock" class="dropdown-content">
+					<li><a href="#">Sort by:</a></li>
+					<li class="divider" tabindex="-1"></li>
+			    	<li><a href="/admin/products/stock/asc">Lowest</a></li>
+			    	<li><a href="/admin/products/stock/desc">Highest</a></li>
+			    </ul>
+				<th class="center"><a class="dropdown-trigger" data-target="dropdownPricing">Pricing</a></th>
+				<ul id="dropdownPricing" class="dropdown-content">
+					<li><a href="#">Sort by:</a></li>
+					<li class="divider" tabindex="-1"></li>
+			    	<li><a href="/admin/products/pricing/asc">Lowest</a></li>
+			    	<li><a href="/admin/products/pricing/desc">Highest</a></li>
+			    </ul>
+				<th class="center"><a class="dropdown-trigger" data-target="dropdownTag">Tags</a></th>
+				<ul id="dropdownTag" class="dropdown-content">
+					<li><a href="#">Sort by:</a></li>
+					<li class="divider" tabindex="-1"></li>
+					@foreach($tags as $tag)
+			    	<li><a href="/admin/products/{{$tag->id}}/tags">{{$tag->tag}}</a></li>
+			    	@endforeach
+			    </ul>
 				<th class="center">Action</th>
 			</tr>
 		</thead>

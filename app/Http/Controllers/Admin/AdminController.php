@@ -28,6 +28,26 @@ class AdminController extends Controller
 					->with('tags', $tags);
 	}
 
+	public function sortProduct($params, $sort)
+    {	
+    	if ($sort != 'tags') {
+    		$products = Product::orderBy($params, $sort)->paginate(15);
+    	} else {
+    		$tag = Tag::find($params);
+    		$products = $tag->products()->paginate(15);
+    	}
+        
+        return view('admin.products')->with('products', $products);
+    }
+
+    public function searchProduct(Request $request)
+    {
+    	$search = $request->input('searchProduct');
+    	$products = Product::where('name', 'LIKE', "%$search%")->paginate(15);
+
+    	return view('admin.products')->with('products', $products);
+    }
+
 	public function showCustomers()
 	{
 		$customers = User::paginate(20);

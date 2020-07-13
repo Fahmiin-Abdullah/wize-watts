@@ -119,7 +119,7 @@
 						<div class="col m4">
 							<div class="input-field editShipping">
 								<input type="number" step="0.01" name="shipping" required>
-							</div>	
+							</div>
 						</div>
 					</div>
 					<div class="row">
@@ -184,7 +184,7 @@
 			</div>
 		</div>
 	</form>
-	
+
 </div>
 
 <div class="container90">
@@ -260,10 +260,6 @@
 			@endforeach
 		</tbody>
 	</table>
-</div>
-
-<div class="center-align paddingTop15">
-	{{$products->links()}}
 </div>
 
 <div class="container90 paddingTop50 paddingBottom20">

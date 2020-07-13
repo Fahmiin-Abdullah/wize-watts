@@ -286,12 +286,8 @@
 				@endif
 				@endforeach
 			</div>
-
-			<div class="center-align marginTop30">
-				{{$products->links()}}
-			</div>
 		</div>
-  	</div>
+  </div>
 </div>
 @endsection
 

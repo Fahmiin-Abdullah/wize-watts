@@ -65,7 +65,7 @@ class ShopController extends Controller
 
 	public function getCategory($id)
 	{
-		$products = Product::where('category_id', $id)->get()->paginate(15);
+		$products = Product::where('category_id', $id)->paginate(15);
 
 		return view('users.shop')->with('products', $products);
 	}
@@ -83,7 +83,7 @@ class ShopController extends Controller
 
 			return response(1);
 		}
-		
+
 		$faved->delete();
 		return response(0);
 	}

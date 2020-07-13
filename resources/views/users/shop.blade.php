@@ -9,7 +9,7 @@
 	<h3 class="section center"><strong>Never need to look for another site again</strong></h3>
 	<h5 class="section center paddingLeft20Small paddingRight20Small"><em>- From amplifiers to zeners, we got them for you</em></h5>
 </div>
-	
+
 <div class="container90">
 	<div class="row paddingTop30">
 		<div class="col s12 m3 white-text">
@@ -182,11 +182,6 @@
 				</div>
 				@endforeach
 			</div>
-
-			<div class="center-align marginTop30">
-				{{$products->links()}}
-			</div>
-
 		</div>
 	</div>
 </div>

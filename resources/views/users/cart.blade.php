@@ -14,7 +14,7 @@
 				<table>
 					<thead>
 						<tr>
-							<th>Product</th>
+							<th class="tableMed">Product</th>
 							<th class="center hide-on-med-and-down">Quantity</th>
 							<th class="center">Unit price<br>BND$</th>
 							<th class="center">Total price<br>BND$</th>
@@ -24,7 +24,7 @@
 					<tbody>
 						@foreach($cartItems as $item)
 						<tr>
-							<td><a href="/products/view/{{$item->id}}">{{$item->name}}<span class="hide-on-large-only"> ({{$item->qty}})</span></a></td>
+							<td class="tableMed"><a href="/products/view/{{$item->id}}">{{$item->name}}<span class="hide-on-large-only"> ({{$item->qty}})</span></a></td>
 							<td class="center hide-on-med-and-down">{{$item->qty}}</td>
 							<td class="center">{{$item->price}}</td>
 							<td class="center">{{$item->subtotal}}</td>
@@ -49,7 +49,7 @@
 								<table>
 									<thead>
 										<tr>
-											<th>Product</th>
+											<th class="tableMed">Product</th>
 											<th class="center hide-on-med-and-down">Quantity</th>
 											<th class="center">Unit price<br>BND$</th>
 											<th class="center">Total price<br>BND$</th>
@@ -57,7 +57,7 @@
 									</thead>
 									<tbody>
 										<tr>
-											<td><a href="/products/view/{{$item->id}}" class="black-text">{{$item->name}}<span class="hide-on-large-only"> ({{$item->qty}})</span></a></td>
+											<td class="tableMed"><a href="/products/view/{{$item->id}}" class="black-text">{{$item->name}}<span class="hide-on-large-only"> ({{$item->qty}})</span></a></td>
 											<td class="center hide-on-med-and-down">{{$item->qty}}</td>
 											<td class="center">{{$item->price}}</td>
 											<td class="center">{{$item->subtotal}}</td>
@@ -76,8 +76,8 @@
 					</tbody>
 				</table>
 				<hr>
-				<div class="row">
-					<div class="col s12 m6">
+				<div class="row margin0">
+					<div class="col s12 m7">
 						<div class="row">
 							<div class="col s6 m6">
 								<h6>Amount:</h6>
@@ -89,13 +89,13 @@
 								@if(Cart::subtotal() <= 50.00)
 								<h6 class="right-align">{{$shippingTotal}}</h6>
 								@else
-								<h6 class="right-align yellow-text">9.99</h6>
+								<h6 class="right-align"><a class="yellow-text tooltipped" data-position="bottom" data-tooltip="$99.99 total shipping for overall purchase of $50.00 or more.">9.99</a></h6>
 								@endif
 								<h5 class="right-align"><strong>BND${{$cartTotal}}</strong></h5>
 							</div>
 						</div>
 					</div>
-					<div class="col m6 center-align paddingTop20 hide-on-med-and-down">
+					<div class="col m5 center-align paddingTop20 hide-on-med-and-down">
 						<div class="row margin0">
 							<div class="col s12 m6 right-align">
 								<a href="#checkoutModal" class="btn waves-effect waves-light black white-text action modal-trigger
@@ -104,7 +104,7 @@
 								@endguest"><i class="material-icons left">near_me</i>continue</a>
 							</div>
 							<div class="col s12 m6 left-align">
-								<a href="/shop" class="btn waves-effect waves-light yellow black-text shop"><i class="material-icons left">shop</i>keep shopping</a>
+								<a href="/shop" class="btn waves-effect waves-light yellow black-text shop"><i class="material-icons left">shop</i>shop more</a>
 							</div>
 						</div>
 						@guest
@@ -167,7 +167,7 @@
 						@if(Cart::subtotal() <= 50.00)
 						<h6 class="right-align">{{$shippingTotal}}</h6>
 						@else
-						<h6 class="right-align yellow-text">9.99</h6>
+						<h6 class="right-align"><a class="yellow-text tooltipped" data-position="bottom" data-tooltip="$99.99 total shipping for overall purchase of $50.00 or more.">9.99</a></h6>
 						@endif
 						<h5 class="right-align"><strong>BND${{$cartTotal}}</strong></h5>
 					</div>

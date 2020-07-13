@@ -166,7 +166,27 @@ header, main, footer {
 	height: auto;
 }
 
+td, th {
+	border-right: 1px solid #e0e0e0;
+	border-left: 1px solid #e0e0e0;
+}
 
+th {
+	border-top: 1px solid #e0e0e0;
+}
+
+.tdLarge {
+	width: 400px !important;
+	padding: 0 15px 0 15px !important;
+}
+
+.tdMed {
+	width: 200px !important;
+}
+
+.dropdown-content {
+	width: 150px !important;
+}
 
 
 

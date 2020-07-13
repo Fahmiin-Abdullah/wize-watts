@@ -19,8 +19,8 @@ class CreateProductsTable extends Migration
             $table->text('description');
             $table->string('productimage')->default('default_product.jpg');
             $table->integer('stock')->unsigned();
-            $table->decimal('pricing');
-            $table->string('shipping')->nullable();
+            $table->decimal('pricing', 65, 2);
+            $table->decimal('shipping', 65, 2)->nullable();
             $table->text('details')->nullable();
             $table->timestamps();
         });

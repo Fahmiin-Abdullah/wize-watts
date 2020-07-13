@@ -191,24 +191,24 @@
 	<table class="highlight responsive-table table">
 		<thead>
 			<tr>
-				<th>Name</th>
-				<th class="center"><a class="dropdown-trigger" data-target="dropdownStock">Availability</a></th>
+				<th class="tdLarge">Name</th>
+				<th class="center"><a class="dropdown-trigger black-text" data-target="dropdownStock"><i class="material-icons right">arrow_drop_down</i>Availability</a></th>
 				<ul id="dropdownStock" class="dropdown-content">
-					<li><a href="#">Sort by:</a></li>
+					<li><a href="/admin/products">Sort by:</a></li>
 					<li class="divider" tabindex="-1"></li>
-			    	<li><a href="/admin/products/stock/asc">Lowest</a></li>
-			    	<li><a href="/admin/products/stock/desc">Highest</a></li>
+			    	<li><a href="/admin/products/stock/asc">Lowest first</a></li>
+			    	<li><a href="/admin/products/stock/desc">Highest first</a></li>
 			    </ul>
-				<th class="center"><a class="dropdown-trigger" data-target="dropdownPricing">Pricing</a></th>
+				<th class="center"><a class="dropdown-trigger black-text" data-target="dropdownPricing"><i class="material-icons right">arrow_drop_down</i>Pricing</a></th>
 				<ul id="dropdownPricing" class="dropdown-content">
-					<li><a href="#">Sort by:</a></li>
+					<li><a href="/admin/products">Sort by:</a></li>
 					<li class="divider" tabindex="-1"></li>
-			    	<li><a href="/admin/products/pricing/asc">Lowest</a></li>
-			    	<li><a href="/admin/products/pricing/desc">Highest</a></li>
+			    	<li><a href="/admin/products/pricing/asc">Lowest first</a></li>
+			    	<li><a href="/admin/products/pricing/desc">Highest first</a></li>
 			    </ul>
-				<th class="center"><a class="dropdown-trigger" data-target="dropdownTag">Tags</a></th>
+				<th class="center"><a class="dropdown-trigger black-text" data-target="dropdownTag"><i class="material-icons right">arrow_drop_down</i>Tags</a></th>
 				<ul id="dropdownTag" class="dropdown-content">
-					<li><a href="#">Sort by:</a></li>
+					<li><a href="/admin/products">Sort by:</a></li>
 					<li class="divider" tabindex="-1"></li>
 					@foreach($tags as $tag)
 			    	<li><a href="/admin/products/{{$tag->id}}/tags">{{$tag->tag}}</a></li>
@@ -221,10 +221,10 @@
 		<tbody>
 			@foreach($products as $product)
 			<tr>
-				<td><a href="{{route('viewProduct', ['id' => $product->id])}}">{{$product->name}}</a></td>
+				<td class="tdLarge"><a href="{{route('viewProduct', ['id' => $product->id])}}">{{$product->name}}</a></td>
 				<td class="center {{($product->stock <= 5 ? 'red pulse white-text' : '')}}">{{$product->stock}}</td>
 				<td class="center">{{$product->pricing}}</td>
-				<td class="center">
+				<td class="center tdMed">
 					@if($product->tags)
 						@foreach($product->tags as $item)
 						<span class="chip">{{$item->tag}}</span>

@@ -218,7 +218,7 @@
 														<h6><strong>Availability: <span class="yellow-text">{{$item->stock}}</span></strong></h6>
 													</div>
 													<div class="col m6">
-														<form action="{{route('addToCart', ['id' => $product->id])}}" method="GET">
+														<form action="{{route('addToCart', ['id' => $item->id])}}" method="GET">
 															@csrf
 															<div class="input-field">
 																<input type="number" min="0" name="qty" class="white-text quantity" data-max="{{$item->stock}}" data-id="#addButton{{$item->id}}" required>
@@ -265,7 +265,7 @@
 												<h6><strong>Availability: <span class="yellow-text">{{$item->stock}}</span></strong></h6>
 											</div>
 											<div class="col s12 m6">
-												<form action="{{route('addToCart', ['id' => $product->id])}}" method="GET">
+												<form action="{{route('addToCart', ['id' => $item->id])}}" method="GET">
 													@csrf
 													<div class="input-field">
 														<input type="number" min="0" name="qty" class="white-text quantity" data-max="{{$item->stock}}" data-id="#addButtonS{{$item->id}}"required>

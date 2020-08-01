@@ -51,4 +51,26 @@ class User extends Authenticatable
     {
         return $this->hasOne(Role::class);
     }
+
+    /** Methods */
+    public function addFavorite(Product $product)
+    {
+        return $this->favorites()->save(
+            new Favorite(['product_id' => $product->id])
+        );
+    }
+
+    public function isFavorite(Product $product)
+    {
+        return Favorite::where('user_id', $this->id)
+            ->where('product_id', $product->id)
+            ->exists();
+    }
+
+    public function removeFavorite(Product $product)
+    {
+        return Favorite::where('user_id', $this->id)
+            ->where('product_id', $product->id)
+            ->delete();
+    }
 }

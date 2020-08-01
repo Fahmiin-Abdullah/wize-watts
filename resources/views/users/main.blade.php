@@ -11,15 +11,12 @@
 	<h2 class="center paddingTop10 margin0 white-text section"><strong>One stop shop for all your electronics need</strong></h2>
 	<div class="container hide-on-med-and-down">
 		<div class="row paddingTop80 section">
-			<form action="{{route('search')}}" method="GET">
-				@csrf
-				<div class="col m6 offset-m3">
-					<div class="input-field">
-						<input type="search" name="quickSearch" placeholder="Search for a component" class="search" required>
-						<span><div class="searchResults collection hidden searchDropdown"></div></span>
-					</div>
+			<div class="col m6 offset-m3">
+				<div class="input-field">
+					<input type="search" name="quickSearch" placeholder="Search for a component" class="search" required>
+					<span><div class="searchResults collection hidden searchDropdown"></div></span>
 				</div>
-			</form>
+			</div>
 		</div>
 	</div>
 	<div class="hide-on-large-only paddingTop30">

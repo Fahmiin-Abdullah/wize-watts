@@ -2,16 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\User;
-use App\Product;
-use App\Favorite;
-use App\Category;
-use App\Subcategory;
-use App\Cart;
-use App\Tag;
 use Auth;
-use Session;
+use App\Tag;
+use App\Product;
+use Illuminate\Http\Request;
+use App\Http\Resources\Product\ProductSearchResource;
 
 class ShopController extends Controller
 {
@@ -28,30 +23,8 @@ class ShopController extends Controller
 	public function search(Request $request)
 	{
 		$search = $request->get('value');
-		$products = Product::where('name', 'LIKE', "%$search%")->limit(5)->get();
-		$output = '';
-
-		if (count($products) > 0) {
-			foreach ($products as $product) {
-				$output .= '
-					<a href="/products/view/'.$product->id.'" class="collection-item darkGrey white-text paddingAll10">
-						<div class="row margin0">
-							<div class="col s8 m8 left-align">
-								<p>'.$product->name.'</p>
-							</div>
-							<div class="col s4 m4 right-align">
-								<p>'.$product->pricing.'</p>
-							</div>
-						</div>
-					</a>';
-			}
-		} else {
-			$output .= '
-				<a class="collection-item darkGrey white-text"><span>No products found! Try another search</span></a>
-			';
-		}
-
-		return response($output);
+		$products = Product::searchName($search)->limit(5)->get();
+		return ProductSearchResource::collection($products);
 	}
 
 	public function getCatalog($cat, $subcat)

@@ -7,40 +7,44 @@ use Gloudemans\Shoppingcart\Contracts\Buyable;
 
 class Product extends Model implements Buyable
 {
-	public function reviews()
-	{
-		return $this->hasMany(Review::class);
-	}
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
 
-	public function favorites()
-	{
-		return $this->hasMany(Favorite::class);
-	}
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
+    }
 
-	public function category()
-	{
-		return $this->belongsTo(Category::class);
-	}
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 
-	public function subcategory()
-	{
-		return $this->belongsTo(Subcategory::class);
-	}
+    public function subcategory()
+    {
+        return $this->belongsTo(Subcategory::class);
+    }
 
-	public function orders()
-	{
-		return $this->belongsToMany(Order::class);
-	}
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class);
+    }
 
-	public function tags()
-	{
-		return $this->belongsToMany(Tag::class);
-	}
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
 
+    /** Model Methods */
+    public function scopeSearchName($query, $search)
+    {
+        return $query->where('name', 'LIKE', "%$search%");
+    }
 
-
-	// SHOPPING CART BUYABLES
-	public function getBuyableIdentifier($options = NULL){
+    // SHOPPING CART BUYABLES
+    public function getBuyableIdentifier($options = NULL){
         return $this->id;
     }
 
@@ -53,6 +57,6 @@ class Product extends Model implements Buyable
     }
 
     public function getBuyableShipping($options = NULL){
-    	return $this->shipping;
+        return $this->shipping;
     }
 }

@@ -29,26 +29,26 @@ class User extends Authenticatable
 
     public function reviews()
     {
-        return $this->hasMany('App\Review');
+        return $this->hasMany(Review::class);
     }
 
     public function favorites()
     {
-        return $this->hasMany('App\Favorite');
+        return $this->hasMany(Favorite::class);
     }
 
     public function mailList()
     {
-        return $this->hasOne('App\MailingList');
+        return $this->hasOne(MailingList::class);
     }
 
     public function orders()
     {
-        return $this->hasMany('App\Order');
+        return $this->hasMany(Order::class);
     }
 
     public function role()
     {
-        return $this->hasOne('App\Role');
+        return $this->hasOne(Role::class);
     }
 }

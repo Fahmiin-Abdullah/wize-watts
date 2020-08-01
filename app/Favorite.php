@@ -8,11 +8,11 @@ class Favorite extends Model
 {
     public function user()
     {
-    	return $this->belongsTo('App\User');
+    	return $this->belongsTo(User::class);
     }
 
     public function product()
     {
-    	return $this->belongsTo('App\Product');
+    	return $this->belongsTo(Product::class);
     }
 }

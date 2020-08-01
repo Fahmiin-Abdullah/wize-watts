@@ -9,32 +9,32 @@ class Product extends Model implements Buyable
 {
 	public function reviews()
 	{
-		return $this->hasMany('App\Review');
+		return $this->hasMany(Review::class);
 	}
 
 	public function favorites()
 	{
-		return $this->hasMany('App\Favorite');
+		return $this->hasMany(Favorite::class);
 	}
 
 	public function category()
 	{
-		return $this->belongsTo('App\Category');
+		return $this->belongsTo(Category::class);
 	}
 
 	public function subcategory()
 	{
-		return $this->belongsTo('App\Subcategory');
+		return $this->belongsTo(Subcategory::class);
 	}
 
 	public function orders()
 	{
-		return $this->belongsToMany('App\Order');
+		return $this->belongsToMany(Order::class);
 	}
 
 	public function tags()
 	{
-		return $this->belongsToMany('App\Tag');
+		return $this->belongsToMany(Tag::class);
 	}
 
 

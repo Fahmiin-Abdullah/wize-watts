@@ -8,11 +8,11 @@ class Category extends Model
 {
     public function subcategories()
     {
-    	return $this->hasMany('App\Subcategory');
+    	return $this->hasMany(Subcategory::class);
     }
 
     public function products()
     {
-    	return $this->hasMany('App\Product');
+    	return $this->hasMany(Product::class);
     }
 }

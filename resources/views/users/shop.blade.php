@@ -14,15 +14,12 @@
 	<div class="row paddingTop30">
 		<div class="col s12 m3 white-text">
 			<div class="row">
-				<form action="{{route('search')}}" method="GET">
-				@csrf
 				<div class="col m11">
 					<div class="input-field">
 						<input type="search" name="quickSearch" placeholder="Search for a component" class="search" required>
 						<span><div class="searchResults collection hidden searchDropdown"></div></span>
 					</div>
 				</div>
-			</form>
 			</div>
 			<h5 class="paddingBottom10">Our products</h5>
 			<ul class="collapsible productsSidebar">

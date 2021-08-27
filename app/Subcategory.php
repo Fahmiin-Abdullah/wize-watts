@@ -8,11 +8,11 @@ class Subcategory extends Model
 {
     public function category()
     {
-    	return $this->belongsTo('App\Category');
+    	return $this->belongsTo(Category::class);
     }
 
     public function products()
     {
-    	return $this->hasMany('App\Product');
+    	return $this->hasMany(Product::class);
     }
 }

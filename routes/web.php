@@ -51,7 +51,7 @@ Route::get('/profile/info/{id}', 'ProfileController@fetchInfo')->name('fetchInfo
 Route::post('/profile/edit/address/{id}', 'ProfileController@editAddress')->name('editAddress');
 
 //FAVORITES
-Route::post('/favorite/{id}', 'ShopController@createFav')->name('createFav');
+Route::post('/favorite/{product}', 'ShopController@createFav')->name('createFav');
 
 
 

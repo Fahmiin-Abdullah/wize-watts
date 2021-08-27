@@ -46,7 +46,29 @@ $(document).ready(function() {
 			url: '/search',
 			data: {value: value},
 			success: function(data) {
-				$('.searchResults').html(data);
+				const products = data.data;
+				let htmlString = ``;
+				if (products.length === 0) {
+					htmlString = `<a class="collection-item darkGrey white-text"><span>No products found! Try another search</span></a>`;
+					$('.searchResults').html(htmlString);
+					return;
+				}
+
+				products.forEach(product => {
+					htmlString += `
+					<a href="/products/view/${product.id}" class="collection-item darkGrey white-text paddingAll10">
+						<div class="row margin0">
+							<div class="col s8 m8 left-align">
+								<p>${product.name}</p>
+							</div>
+							<div class="col s4 m4 right-align">
+								<p>${product.pricing}</p>
+							</div>
+						</div>
+					</a>
+					`;
+				})
+				$('.searchResults').html(htmlString);
 			}
 		});
 	});
@@ -54,7 +76,6 @@ $(document).ready(function() {
 	$('.footerWidget').on('click', function(e) {
 		e.preventDefault();
 		const link = $(this).data('reveal');
-		console.log(link);
 		$('.linkReveal').hide(500);
 		$(link).show(500);
 	});
